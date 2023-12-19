@@ -43,14 +43,15 @@ export default {
     }
   },
   mounted: function () {
-    //this.test.push(1);
     $.get("/appGetProducts", (response) => {
       this.products = JSON.parse(response);
     });
   },
   methods: {
     cartRemoveProduct: function(product) {
-      this.cart.splice(index,Infinity)
+      this.cart = this.cart.filter(function(element) {
+        return element.id !== product.id
+      })
     },
     cartDecreaseProduct: function(index) {
       this.cart.splice(index,1)
