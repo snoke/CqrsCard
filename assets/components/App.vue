@@ -25,6 +25,7 @@ export default {
     productAddToCart(product) {
       console.log(this.cart)
       console.log(product)
+      this.card.push(product)
       alert("bbbb")
     },
     appGetProducts: function() {
