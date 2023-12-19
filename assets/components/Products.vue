@@ -27,8 +27,8 @@ export default {
     appGetProducts: function(productId) {
       let self = this;
 
-      $.get( "/appGetProducts", function( data ) {
-        self.products = data;
+      $.get( "/appGetProducts", function( response ) {
+        self.products = response.data;
       });
     },
     productAddToCart: function (product) {
