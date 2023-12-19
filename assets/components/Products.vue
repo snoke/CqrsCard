@@ -28,6 +28,8 @@ export default {
       axios.get('/appGetProducts')
           .then(function (response) {
             console.log(response.data)
+            console.log(Object.assign([], response.data))
+            console.log(JSON.parse(response.data))
             self.products = Object.assign([], response.data);
           })
           .catch(function (error) {
