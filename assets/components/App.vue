@@ -58,13 +58,13 @@ export default {
       this.cart.splice(index,1)
     },
     cartIncreaseProduct: function(index,product) {
-      alert("hi")
-      console.log(this.$refs)
-      for(let i = 0; i < this.$refs['amount_' + index]; i++) {
         this.productAddToCart(product)
-      }
     },
     productAddToCart: function (index,product) {
+      console.log(this.$refs)
+      for(let i = 0; i < this.$refs['amount_' + index]; i++) {
+        this.cart = [product].concat(this.cart)
+      }
       this.cart = [product].concat(this.cart)
     }
   },
