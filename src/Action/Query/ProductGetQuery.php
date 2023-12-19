@@ -1,5 +1,5 @@
 <?php
-namespace App\Action\Command;
+namespace App\Action\Query;
 
 use App\Entity\Cart;
 use App\Entity\Product as ProductEntity;
