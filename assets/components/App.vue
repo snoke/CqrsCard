@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Products from './Products';
 import Cart from './Cart';
 export default {
@@ -14,12 +15,19 @@ export default {
   components: {Products,Cart},
   data: function() {
     return {
-      products: [
-        { id: 1, name: 'test', price:2.25}
-      ],
+      products: []
     }
   },
   methods: {
+    appGetProducts: function(productId) {
+      axios.get('/appGetProducts')
+          .then(function (response) {
+            this.products = JSON.parse(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    },
   },
   mounted: function() {
   },

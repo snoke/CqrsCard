@@ -5,7 +5,7 @@
           <div class="name">{{product.name}}</div>
           <div class="price">price: {{product.price}}€</div>
           <div class="add-to-cart">
-            <button type="button" class="btn btn-outline-primary" @click="addToCart(product.id)">add to cart</button>
+            <button type="button" class="btn btn-outline-primary" @click="productAddToCart(product.id)">add to cart</button>
           </div>
         </li>
       </ul>
@@ -23,17 +23,19 @@ export default {
     }
   },
   methods: {
-    addToCart: function(productId) {
-      axios.post('/user', {
-        firstName: 'Fred',
-        lastName: 'Flintstone'
-      })
+    command: function(command,params) {
+      axios.post('/'+command,params)
           .then(function (response) {
             console.log(response);
           })
           .catch(function (error) {
             console.log(error);
           });
+    },
+    productAddToCart: function(productId) {
+      this.command('addToCart',{
+        productId: productId,
+      })
     }
   },
   mounted: function() {

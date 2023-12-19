@@ -5,18 +5,20 @@
 
 namespace App\Controller;
 
+use App\Action\Query\AppGetProductsQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AppController extends AbstractController
 {
     /**
-     * @Route("/test", name="test")
+     * @Route("/appGetProducts", name="AppGetProducts")
      */
-    public function test($client="web",$route=null): Response
+    public function appGetProducts(AppGetProductsQuery $query): JsonResponse
     {
-        return $this->render('app/test.html.twig', );
+         return $query->fetch();
     }
 
     /**

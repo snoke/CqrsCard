@@ -5,7 +5,7 @@ use App\Repository\CartRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
-class CartAddProductCommand
+class ProductAddToCartCommand
 {
     private EntityManagerInterface $entityManager;
     private CartRepository $cartRepository;
