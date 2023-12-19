@@ -20,13 +20,12 @@ export default {
     }
   },
   created: function() {
-    let self = this;
-    this.$root.$on('productAddToCart',function(product) {
-      self.productAddToCart(product)
+    this.$root.$on('productAddToCart', (product) => {
+      this.productAddToCart(product)
     })
   },
   methods: {
-    productAddToCart: function(product) {
+    productAddToCart: (product) => {
       this.cart.push(product);
     },
     appGetProducts: function() {
