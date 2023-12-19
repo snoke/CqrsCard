@@ -7,7 +7,7 @@
         <li v-for="(product,index) in cart" :key="product.id" class="product">
           <div class="name">{{ product.name }}</div>
           <div class="buttons">
-            <input type="text" id='"amount_"+index'/><button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(product)">+</button>
+            <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(product)">+</button>
             <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(index)">-</button>
             <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(product)">remove</button>
           </div>
@@ -21,7 +21,7 @@
           <div class="name">{{ product.name }}</div>
           <div class="price">price: {{ product.price }}€</div>
           <div class="add-to-cart">
-            <button type="button" class="btn btn-outline-primary" @click="productAddToCart(product)">add to cart
+            <input type="text" :id="'amount_'+index" value="1"/><button type="button" class="btn btn-outline-primary" @click="productAddToCart(product)">add to cart
             </button>
           </div>
         </li>
