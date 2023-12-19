@@ -84,52 +84,15 @@ var router = {
   components: {Base},
   routes: [
       { 
-              name: "auth",
-              path: '/auth', 
-              component:  Auth,
-              props: true,
-      },
-      { 
               name: "app",
               path: '/app', 
               component:  App,
               props: true,
               children:[
-                
-                { 
-                  name: "app_contacts",
-                  path: '/app/contacts', 
-                  component:  Contacts,
-                  props: true,
-                },
-                { 
-                  name: "app_chats",
-                  path: '/app/chats', 
-                  component:  Chats,
-                  props: true,
-                },
-                { 
-                  name: "app_settings",
-                  path: '/app/settings', 
-                  component:  Settings,
-                  props: true,
-                },
-                { 
-                  name: "app_chat",
-                  path: '/app/chat/:id', 
-             //     component:  Chat,
-                  component:  Chat,
-                  props: true,
-                },
               ]
-
       }
   ]
 };
-var config = JSON.parse(document.getElementById('_symfonyData').innerHTML);
-if (config.client=='web') {
-    router.mode='history'
-}
 router = new VueRouter(router);
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
@@ -140,51 +103,13 @@ import device from "vue-device-detector"
 Vue.use(device)
 
 new Vue({
-    created: function() {
-      this.config= config
-    },
     methods: {
-      connect() {
-        if (!this.connected) {
-          if (!this.connection) {
-          this.connection = new WebSocket(this.config.websocket_url)
-            this.connection.onopen =  () => {
-                this.connected = true;
-                this.$router.push({ name: 'auth'})
-            }
-            this.connection.onclose =  () => {
-              this.connected = null;
-              this.connection = null;
-              this.$root.$emit('Base::connection-lost',{});
-            }
-            
-            this.connection.onmessage = (event) => {
-                let result = JSON.parse(event.data);
-                this.$emit(result.command, result)
-                
-          }
-        }
-        }
-      },
-      notify:function(message) {
-        if (this.notify_permission) {
-          console.log("got permissions, sending notification")
-          var notification = new Notification(message);
-        } else {
-          console.log("no permissions")
-        }
-      },
       created() {
       },
     },
     data: function() {
       return {
         config:[],
-        connection:null,
-        connected:null,
-        token:null,
-        claim:null,
-        notify_permission:null,
       }
     },
     el: '#app',

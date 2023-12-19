@@ -16,9 +16,7 @@ class AppController extends AbstractController
      */
     public function test($client="web",$route=null): Response
     {
-        return $this->render('app/test.html.twig', [
-            'controller_name' => 'ApptestController',
-        ]);
+        return $this->render('app/test.html.twig', );
     }
 
     /**
@@ -26,12 +24,6 @@ class AppController extends AbstractController
      */
     public function index($client="web",$route=null): Response
     {
-        return $this->render('app/index.html.twig', [
-            'controller_name' => 'AppController',
-            'config' => [
-                'websocket_url' => $_ENV['WEBSOCKET_URL'],
-                'client' => $client,
-            ]
-        ]);
+        return $this->render('app/index.html.twig', );
     }
 }
