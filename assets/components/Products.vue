@@ -17,7 +17,7 @@
 import axios from 'axios'
 
 export default {
-  data: function () {
+  data() {
     return {
       products: []
     }
@@ -27,7 +27,7 @@ export default {
       axios.get('/appGetProducts')
           .then(function (response) {
             console.log(response.data)
-            console.log(this.products)
+            console.log(this.data)
             this.products = Object.assign({}, response.data);
             alert(response.data)
           })
