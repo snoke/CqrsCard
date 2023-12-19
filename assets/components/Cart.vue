@@ -33,7 +33,7 @@ export default {
   },
   created: function () {
     this.$root.$on('cartAddProduct', () => {
-      this.$forceUpdate();
+      console.log("this.$root.$on('cartAddProduct'");
     });
   }
 }
