@@ -7,12 +7,7 @@ import './styles/app.css';
 import './bootstrap';
 import Vue from 'vue';
 import Base from './Base';
-import Auth from './components/Auth';
 import App from './components/App';
-import Contacts from './components/App/Contacts';
-import Chats from './components/App/Chats';
-import Settings from './components/App/Settings';
-import Chat from './components/App/Chats/Chat';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
