@@ -37,7 +37,7 @@ export default {
     this.$root.$on('cartAddProduct', (product) => {
       console.log("this.$root.$on('cartAddProduct'");
       console.log(product)
-      cart.push(product)
+      cart.push(Object.assign({}, product))
       console.log(cart)
       console.log(this.cart)
     });
