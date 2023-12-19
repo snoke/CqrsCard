@@ -27,12 +27,8 @@ export default {
       axios.get('/appGetProducts')
           .then(function (response) {
             console.log(response.data)
-            for (let object of response.data) {
-              console.log(object)
-              // code block to be executed
-              this.products.push(object);
-
-            }
+            console.log(this.products)
+            this.products = Object.assign({}, response.data);
             alert(response.data)
           })
           .catch(function (error) {
