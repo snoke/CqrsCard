@@ -44,9 +44,9 @@ export default {
     }
   },
   mounted: function () {
-
-    axios.get("/appGetProducts", (response) => {
-      console.log(response)
+    axios.get("/appGetProducts")
+        .then( (response) => {
+          console.log(response)
     });
     $.get("/appGetProducts", (response) => {
       console.log(response)

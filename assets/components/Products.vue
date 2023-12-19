@@ -1,4 +1,3 @@
-<!-- Author: Stefan Sander <mail@stefan-sander.online> -->
 <template>
   <div id="products">products
     <ul>
@@ -6,7 +5,7 @@
         <div class="name">{{ product.name }}</div>
         <div class="price">price: {{ product.price }}€</div>
         <div class="add-to-cart">
-          <button type="button" class="btn btn-outline-primary" @click="$parent.productAddToCart(product)">add to cart
+          <button type="button" class="btn btn-outline-primary" @click="productAddToCart(product)">add to cart
           </button>
         </div>
       </li>
@@ -16,7 +15,6 @@
 
 <script>
 import axios from 'axios'
-import $ from "jquery";
 
 export default {
   data() {
@@ -27,13 +25,17 @@ export default {
   methods: {
     appGetProducts: function(productId) {
       let self = this;
-      $.get( "/appGetProducts", function( response ) {
-        let data = JSON.parse(response);
-        self.products = data;
-      });
+      axios.get('/appGetProducts')
+          .then(function (response) {
+            self.products = response.data;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     },
     productAddToCart: function (product) {
       this.$parent.productAddToCart(product)
+      this.$root.$emit('productAddToCart', Object.assign({}, product))
     }
   },
 
