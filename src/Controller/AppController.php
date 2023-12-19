@@ -5,8 +5,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Action\Command\CartSaveCommand;
 use App\Action\Query\AppGetProductsQuery;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -40,6 +42,22 @@ class AppController extends AbstractController
         return new JsonResponse(true);
     }
 
+    /**
+     * @Route("/migrate", name="migrate")
+     */
+    public function migrate(Request $request,EntityManagerInterface $em): JsonResponse
+    {
+        $product = new Product();
+        $product->setName('test');
+        $product->setPrice(2.22);
+        $em->persist($product);$em->flush();
+
+        $product = new Product();
+        $product->setName('test2');
+        $product->setPrice(2.23);
+        $em->persist($product);$em->flush();
+
+    }
     /**
      * @Route("/appGetProducts", name="AppGetProducts")
      */
