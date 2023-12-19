@@ -52,11 +52,8 @@ export default {
     cartRemoveProduct: function(product) {
     },
     cartDecreaseProduct: function(product) {
-      let array = [].concat(this.cart)
-      let index = array.findIndex((e) => { return e.id === product.id});
-      array.splice(index,1)
-      this.cart = array
-
+      let index = this.cart.findIndex((e) => { return e.id === product.id});
+      this.cart.splice(index,1)
     },
     cartIncreaseProduct: function(product) {
       this.productAddToCart(product)
