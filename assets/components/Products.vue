@@ -28,8 +28,10 @@ export default {
       let data;
       axios.get('/appGetProducts')
           .then(function (response) {
-            this.products = response.data;
-            console.log(this.products)
+            console.log(response.data)
+          })
+          .catch(function (error) {
+            console.log(error);
           });
     },
     productAddToCart: function (productId) {

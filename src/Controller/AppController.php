@@ -61,7 +61,7 @@ class AppController extends AbstractController
     /**
      * @Route("/appGetProducts", name="AppGetProducts")
      */
-    public function appGetProducts(Request $request, AppGetProductsQuery $query): JsonResponse
+    public function appGetProducts(Request $request, AppGetProductsQuery $query): Response
     {
          return $query->fetch($request);
     }
