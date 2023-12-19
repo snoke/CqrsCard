@@ -65,7 +65,6 @@ export default {
       for(let i = 1; i < this.$refs['amount_' + index][0].value; i++) {
         this.cart = [product].concat(this.cart)
       }
-      this.cart = [product].concat(this.cart)
     }
   },
 }
