@@ -32,6 +32,9 @@ export default {
   mounted: function() {
   },
   created: function () {
+    this.$root.$on('cartAddProduct', () => {
+      this.$forceUpdate();
+    });
   }
 }
 </script>
