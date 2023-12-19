@@ -16,7 +16,6 @@ export default {
     }
   },
   mounted: function(){
-    this.appGetProducts()
     this.test.push(1);
     let self = this;
     $.get( "/appGetProducts", function( response ) {
