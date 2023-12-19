@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       products: [],
-      card: []
+      cart: []
     }
   },
   mounted: function () {
