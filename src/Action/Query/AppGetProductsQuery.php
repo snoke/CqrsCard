@@ -15,6 +15,7 @@ class AppGetProductsQuery implements QueryInterface
 
     public function fetch(array $parameters = []): JsonResponse
     {
+        die("ASD");
         return new JsonResponse(AppGetProductsResource::get($this->productRepository->findAll()));
     }
 }
