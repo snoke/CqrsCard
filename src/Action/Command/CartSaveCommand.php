@@ -8,17 +8,15 @@ use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class CartSaveCommand extends AbstractAction implements CommandInterface
+class CartSaveCommand extends AbstractCommand implements CommandInterface
 {
-    private EntityManagerInterface $entityManager;
     private CartRepository $cartRepository;
     private ProductRepository $productRepository;
 
     public function __construct(Request $request, EntityManagerInterface $entityManager, CartRepository $cartRepository, ProductRepository $productRepository) {
 
-        parent::__construct( $request);
+        parent::__construct($request, $entityManager);
 
-        $this->entityManager = $entityManager;
         $this->cartRepository = $cartRepository;
         $this->productRepository = $productRepository;
     }
