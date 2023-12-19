@@ -18,7 +18,7 @@ class AppGetProductsQuery implements QueryInterface
         try {
             $e = AppGetProductsResource::get($this->productRepository->findAll());
 
-        } catch(\Throwablehrowable $e) {
+        } catch(\Throwable $e) {
             var_dump($e->getMessage());
         }
         die("ASDDDD");
