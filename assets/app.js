@@ -98,14 +98,29 @@ import device from "vue-device-detector"
 Vue.use(device)
 
 new Vue({
-    methods: {
-      created() {
-      },
-    },
     data: function() {
-      return {
-        config:[],
-      }
+        return {
+            cart: [],
+            products: [],
+            config:[],
+        }
+    },
+    methods: {
+        appGetProducts: function() {
+            let self = this;
+            axios.get('/appGetProducts')
+                .then(function (response) {
+                    self.products = Object.assign({}, response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        productAddToCart: function (productId) {
+            axios.post('/' + 'addToCart', {
+                productId: productId,
+            })
+        }
     },
     el: '#app',
     render: h => h(Base),  router: router,

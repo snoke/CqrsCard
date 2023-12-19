@@ -1,7 +1,7 @@
 <template>
   <div id="products">products
     <ul>
-      <li v-for="product in products" :key="product.id" class="product">
+      <li v-for="product in $root.products" :key="product.id" class="product">
         <div class="name">{{ product.name }}</div>
         <div class="price">price: {{ product.price }}€</div>
         <div class="add-to-cart">
@@ -17,33 +17,9 @@
 import axios from 'axios'
 
 export default {
-  data() {
-    return {
-      products: ["ads"]
-    }
-  },
-  methods: {
-    appGetProducts: function(productId) {
-      let self = this;
-      axios.get('/appGetProducts')
-          .then(function (response) {
-            console.log(response.data)
-            self.products = Object.assign({}, response.data);
-            alert(response.data)
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    },
-    productAddToCart: function (productId) {
-      axios.post('/' + 'addToCart', {
-        productId: productId,
-      })
-    }
-  },
 
   mounted: function() {
-    this.appGetProducts()
+    this.$root.appGetProducts()
   },
   updated: function () {
   }
