@@ -13,6 +13,7 @@
             <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(index,product)">remove
             </button>
           </div>
+          <div class="sum">{{this.cartGetSum(cart,'price')}}</div>
         </li>
       </ul>
     </div>
@@ -52,22 +53,38 @@ export default {
         });
   },
   methods: {
-    cartRemoveProduct: function (index, product) {
-      this.cart = this.cart.filter(function (element) {
-        return element.id !== product.id
-      })
+    cartGetSum: function (array, property) {
+      return array.reduce((accumulator, object) => {
+        return accumulator + object[property];
+      }, 0);
     },
-    cartDecreaseProduct: function (index, product) {
-      this.cart.splice(index, 1)
-    },
-    cartIncreaseProduct: function (index, product) {
-      this.productAddToCart(product)
-    },
-    productAddToCart: function (index, product) {
-      for (let i = 0; i < this.$refs['amount_' + index][0].value; i++) {
-        this.cart = [product].concat(this.cart)
-      }
-    }
-  },
+    function calculateSum(array, property)
+{
+  const total = array.reduce((accumulator, object) => {
+    return accumulator + object[property];
+  }, 0);
+
+  return total;
+}
+cartRemoveProduct: function (index, product) {
+  this.cart = this.cart.filter(function (element) {
+    return element.id !== product.id
+  })
+}
+,
+cartDecreaseProduct: function (index, product) {
+  this.cart.splice(index, 1)
+}
+,
+cartIncreaseProduct: function (index, product) {
+  this.productAddToCart(product)
+}
+,
+productAddToCart: function (index, product) {
+  for (let i = 0; i < this.$refs['amount_' + index][0].value; i++) {
+    this.cart = [product].concat(this.cart)
+  }
+}
+},
 }
 </script>
