@@ -1,7 +1,7 @@
 <template>
   <div id="cart">cart
     <ul>
-      <li v-for="product in cart" :key="product.id" class="product">
+      <li v-for="product in $root.cart" :key="product.id" class="product">
         <div class="name">{{ product.name }}</div>
         <div class="price">price: {{ product.price }}€</div>
         <div class="buttons">
@@ -25,7 +25,6 @@ export default {
 
   data: function() {
     return {
-      cart: []
     }
   },
   methods: {
@@ -33,14 +32,6 @@ export default {
   mounted: function() {
   },
   created: function () {
-    let cart = this.cart
-    this.$root.$on('cartAddProduct', (product) => {
-      console.log("this.$root.$on('cartAddProduct'");
-      console.log(product)
-      cart.push(Object.assign({}, product))
-      console.log(cart)
-      console.log(this.cart)
-    });
   }
 }
 </script>
