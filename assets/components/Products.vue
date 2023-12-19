@@ -19,7 +19,7 @@ import axios from 'axios'
 export default {
   data: function () {
     return {
-      count: 0
+      products: []
     }
   },
   methods: {
@@ -30,6 +30,8 @@ export default {
             for (let object of response.data) {
               console.log(object)
               // code block to be executed
+              this.products.push("object");
+
             }
             alert(response.data)
           })
