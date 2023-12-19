@@ -4,11 +4,11 @@
 
     <div id="cart">cart
       <ul>
-        <li v-for="product in cart" :key="product.id" class="product">
+        <li v-for="(product,index) in cart" :key="product.id" class="product">
           <div class="name">{{ product.name }}</div>
           <div class="buttons">
             <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(product)">+</button>
-            <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(product)">-</button>
+            <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(index)">-</button>
             <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(product)">remove</button>
           </div>
         </li>
@@ -50,9 +50,9 @@ export default {
   },
   methods: {
     cartRemoveProduct: function(product) {
+      this.cart.splice(index,-1)
     },
-    cartDecreaseProduct: function(product) {
-      let index = this.cart.findIndex((e) => { return e.id === product.id});
+    cartDecreaseProduct: function(index) {
       this.cart.splice(index,1)
     },
     cartIncreaseProduct: function(product) {
