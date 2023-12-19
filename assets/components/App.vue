@@ -7,9 +7,9 @@
         <li v-for="product in cart" :key="product.id" class="product">
           <div class="name">{{ product.name }}</div>
           <div class="buttons">
-            <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct">+</button>
-            <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct">-</button>
-            <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct">remove</button>
+            <button type="button" class="btn btn-outline-secondary">+</button>
+            <button type="button" class="btn btn-outline-secondary">-</button>
+            <button type="button" class="btn btn-outline-secondary">remove</button>
           </div>
         </li>
       </ul>
