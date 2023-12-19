@@ -5,7 +5,7 @@
         <div class="name">{{ product.name }}</div>
         <div class="price">price: {{ product.price }}€</div>
         <div class="add-to-cart">
-          <button type="button" class="btn btn-outline-primary" @click="productAddToCart(product.id)">add to cart
+          <button type="button" class="btn btn-outline-primary" @click="productAddToCart(product)">add to cart
           </button>
         </div>
       </li>
@@ -34,8 +34,9 @@ export default {
             console.log(error);
           });
     },
-    productAddToCart: function (productId) {
+    productAddToCart: function (product) {
       let x = this.products
+      x.push(product)
       console.log(x)
     }
   },
