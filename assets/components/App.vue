@@ -20,8 +20,9 @@ export default {
     }
   },
   created: function() {
+    let self = this;
     this.$root.$on('productAddToCart',function(product) {
-      this.productAddToCart(product)
+      self.productAddToCart(product)
     })
   },
   methods: {
