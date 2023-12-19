@@ -19,7 +19,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      products: ["ads"]
+      products: []
     }
   },
   methods: {
@@ -35,9 +35,8 @@ export default {
           });
     },
     productAddToCart: function (productId) {
-      axios.post('/' + 'addToCart', {
-        productId: productId,
-      })
+      let x = this.products
+      console.log(x)
     }
   },
 
