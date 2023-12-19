@@ -12,6 +12,14 @@
 import App from './components/App';
 export default {
   name: 'Base',
-    components: {App}
+    components: {App},
+  methods: {
+    go(page) {
+      this.$router.push({name: page})
+    }
+  },
+  mounted: function() {
+    this.go('app')
+  },
 }
 </script>

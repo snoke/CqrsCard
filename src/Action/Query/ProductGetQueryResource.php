@@ -1,8 +1,7 @@
 <?php
-namespace App\Resources;
+namespace App\Action\Query;
 
 use App\Entity\Product as ProductEntity;
-use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class ProductGetQueryResource
