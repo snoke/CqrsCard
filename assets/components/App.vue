@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import $ from "jquery";
+
 import Products from './Products';
 import Cart from './Cart';
 import axios from 'axios'
@@ -19,24 +21,16 @@ export default {
       products: [],
     }
   },
-  created: function() {
-    this.$root.$on('productAddToCart', (product) => {
-      this.productAddToCart(Object.assign({}, product))
-    })
-  },
   methods: {
     productAddToCart(product) {
       this.cart.push(Object.assign({}, product));
     },
     appGetProducts: function() {
       let parent = this;
-      axios.get('/appGetProducts')
-          .then(function (response) {
-            parent.products = Object.assign({}, response.data);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+
+      $.get( "test.php", function( data ) {
+        console.log(data)
+      });
     },
   },
 }
