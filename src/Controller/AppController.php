@@ -12,15 +12,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class AppController extends AbstractController
 {
     /**
-     * @Route("/client/{client}")
+     * @Route("/test", name="test")
+     */
+    public function test($client="web",$route=null): Response
+    {
+        return $this->render('app/index.html.twig', [
+            'controller_name' => 'ApptestController',
+        ]);
+    }
+
+    /**
      * @Route("/", name="index")
-     * @Route("/{route}", name="index_route", requirements={"route"="^.+"})
      */
     public function index($client="web",$route=null): Response
     {
         return $this->render('app/index.html.twig', [
             'controller_name' => 'AppController',
-            'config' => [ 
+            'config' => [
                 'websocket_url' => $_ENV['WEBSOCKET_URL'],
                 'client' => $client,
             ]
