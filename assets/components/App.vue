@@ -44,7 +44,7 @@ export default {
   data: function() {
     return {
       cart: [],
-      products: null,
+      products: [],
     }
   },
   mounted: function() {
@@ -61,7 +61,6 @@ export default {
             this.products = response.data
           })
           .catch(function (error) {
-            console.log(error);
           });
     },
   },
