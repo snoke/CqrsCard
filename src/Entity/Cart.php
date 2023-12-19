@@ -16,7 +16,7 @@ class Cart
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $sessionId = null;
+    private ?string $sessionId = null;
 
     #[ORM\ManyToMany(targetEntity: Product::class)]
     private Collection $products;
@@ -30,7 +30,7 @@ class Cart
         return $this->id;
     }
 
-    public function setSessionId(int $sessionId): static
+    public function setSessionId(string $sessionId): static
     {
         $this->sessionId = $sessionId;
 
@@ -51,7 +51,7 @@ class Cart
 
         return $this;
     }
-    public function getSessionId(): ?int
+    public function getSessionId(): ?string
     {
         return $this->sessionId;
     }
