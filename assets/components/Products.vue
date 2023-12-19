@@ -36,8 +36,7 @@ export default {
     },
     productAddToCart: function (product) {
       let x = this.products
-      x.push(product)
-      console.log(x)
+      console.log(this.products)
     }
   },
 
