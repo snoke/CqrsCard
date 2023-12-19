@@ -28,13 +28,7 @@ export default {
       let data;
       axios.get('/appGetProducts')
           .then(function (response) {
-            console.log(response.data)
             data = response.data
-            console.log(data)
-          })
-          .catch(function (error) {
-            console.log("hi2")
-            console.log(error);
             console.log(data)
           });
     },
