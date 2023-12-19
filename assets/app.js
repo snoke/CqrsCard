@@ -107,7 +107,7 @@ new Vue({
     },
     methods: {
         productAddToCart: function(product) {
-            this.cart.push(Object.assign({}, product));
+            this.$root.cart.push(Object.assign({}, product));
 
             this.$emit('cartAddProduct', product);
             console.log("this.$root.$emit('cartAddProduct'");
