@@ -45,7 +45,7 @@ export default {
     });
 },
   methods: {
-    productAddToCart: (product) => {
+    productAddToCart: function(product) {
       this.cart = [product]
     }
     },
