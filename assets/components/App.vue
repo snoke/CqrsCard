@@ -57,7 +57,7 @@ export default {
     appGetProducts: function() {
       let self = this;
       axios.get('/appGetProducts')
-          .then((response) => {
+          .then(function(response) {
             this.products = response.data
           })
           .catch(function (error) {
