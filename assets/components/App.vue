@@ -45,8 +45,13 @@ export default {
     });
 },
   methods: {
-    productAddToCart: function(product) {
-      this.cart = [product]
+    productAddToCart: function(_product) {
+      let cart = []
+      for(let product of this.cart) {
+        cart.push(product)
+      }
+      cart.push(_product)
+      this.cart = cart
     }
     },
 }
