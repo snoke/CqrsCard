@@ -68,6 +68,9 @@ export default {
         });
   },
   methods: {
+    cartCheckout: function () {
+      alert("check it out now!")
+    },
     cartRemoveProduct: function (index, product) {
       this.cart = this.cart.filter(function (element) {
         return element.id !== product.id
