@@ -18,6 +18,7 @@ class AppController extends AbstractController
      */
     public function appGetProducts(AppGetProductsQuery $query): JsonResponse
     {
+        die("ASD");
          return $query->fetch();
     }
 
