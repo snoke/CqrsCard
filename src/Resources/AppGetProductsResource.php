@@ -1,5 +1,5 @@
 <?php
-namespace App\Action\Query;
+namespace App\Resources;
 
 use App\Entity\Product as ProductEntity;
 use Doctrine\ORM\EntityManagerInterface;

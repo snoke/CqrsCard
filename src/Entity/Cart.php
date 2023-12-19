@@ -15,6 +15,9 @@ class Cart
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column]
+    private ?int $sessionId = null;
+
     #[ORM\ManyToMany(targetEntity: Product::class)]
     private Collection $products;
 
@@ -26,6 +29,18 @@ class Cart
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setSessionId(int $sessionId): static
+    {
+        $this->sessionId = $sessionId;
+
+        return $this;
+    }
+
+    public function getSessionId(): ?int
+    {
+        return $this->sessionId;
     }
 
     /**
