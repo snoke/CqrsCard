@@ -35,8 +35,8 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
         $cart = new Cart();
         $cart->setSessionId($session->getId());
         foreach(json_decode($request->getContent(),true) as $product) {
-            var_dump($product);die;
-            $cart->addProduct($this->productRepository->find($product['id']));
+            $product = (object) $product[0];
+            $cart->addProduct($this->productRepository->find($product->id));
         }
         $this->entityManager->persist($cart);
         $this->entityManager->flush();
