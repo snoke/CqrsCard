@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class AppController extends AbstractController
 {
@@ -24,9 +26,9 @@ class AppController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index($client="web",$route=null): Response
+    public function index(Request $request): Response
     {
-        var_dump($_SESSION);
+        var_dump($request->getSession());
         die;
         return $this->render('app/index.html.twig', );
     }
