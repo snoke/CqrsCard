@@ -1,7 +1,7 @@
 <!-- Author: Stefan Sander <mail@stefan-sander.online> -->
 <template>
-  <div id="app">a
-    <Cart></Cart>b
+  <div id="app">
+    <Cart></Cart>
     <Products></Products>
   </div>
 </template>
