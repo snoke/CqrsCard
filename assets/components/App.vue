@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     cartRemoveProduct: function(product) {
-      this.cart.splice(index,-1)
+      this.cart.splice(index,Infinity)
     },
     cartDecreaseProduct: function(index) {
       this.cart.splice(index,1)
