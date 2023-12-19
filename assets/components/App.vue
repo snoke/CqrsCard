@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     cartCheckout: function () {
-      axios.post("/cartCheckout", this.cart)
+      axios.post("/cartSave", {cart: this.cart})
           .then((response) => {
             console.log(response)
             alert("ok")

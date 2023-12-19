@@ -27,18 +27,19 @@ class AppController extends AbstractController
         $session = $request->getSession();
         $session->start();
         $sessionId = $session->getId();
-        $command->execute($products,$sessionId);
+        //$command->execute($products,$sessionId);
         return new JsonResponse(true);
     }
     /**
      * @Route("/cartSave", name="cartSave")
      */
-    public function cartSave(Request $request, CartSaveCommand $command,$products): JsonResponse
+    public function cartSave(Request $request, CartSaveCommand $command): JsonResponse
     {
+        var_dump($request->get('card'));
         $session = $request->getSession();
         $session->start();
         $sessionId = $session->getId();
-        $command->execute($products,$sessionId);
+        $command->execute($request->get('card'),$sessionId);
         return new JsonResponse(true);
     }
 
