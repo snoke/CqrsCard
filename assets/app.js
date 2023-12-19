@@ -100,17 +100,27 @@ Vue.use(device)
 new Vue({
     data: function() {
         return {
-            cart: [],
+            cart: [{id: 1, name: 'test', price: 2.25},{id: 1, name: 'test', price: 2.25}],
             products: [],
             config:[],
         }
     },
     methods: {
+        appGetCart: function() {
+            let parent = this;
+            axios.get('/appGetCart')
+                .then(function (response) {
+                    parent.cart = Object.assign({}, response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
         appGetProducts: function() {
-            let self = this;
+            let parent = this;
             axios.get('/appGetProducts')
                 .then(function (response) {
-                    self.products = Object.assign({}, response.data);
+                    parent.products = Object.assign({}, response.data);
                 })
                 .catch(function (error) {
                     console.log(error);

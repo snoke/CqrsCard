@@ -1,7 +1,7 @@
 <template>
   <div id="cart">
     <ul>
-      <li v-for="product in products" :key="product.id" class="product">
+      <li v-for="product in $root.cart" :key="product.id" class="product">
         <div class="name">{{ product.name }}</div>
         <div class="price">price: {{ product.price }}€</div>
         <div class="buttons">
@@ -22,67 +22,9 @@
 import axios from 'axios'
 
 export default {
-  data: function () {
-    return {
-      products: [
-        {id: 1, name: 'test', price: 2.25}
-      ],
-    }
-  },
-  methods: {
-    command: function (command, params) {
-      axios.post('/' + command, params)
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    },
-    cartIncreaseProduct: function (productId) {
-      axios.post('/' + 'cartIncreaseProduct', {
-        productId: productId,
-      })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    },
-    cartDecreaseProduct: function (productId) {
-      axios.post('/' + 'cartDecreaseProduct', {
-        productId: productId,
-      })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    },
-    cartRemoveProduct: function (productId) {
-      axios.post('/' + 'cartRemoveProduct', {
-        productId: productId,
-      })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    },
-    cartSave: function () {
-      axios.post('/' + 'cartSave', {})
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    },
-  },
-  mounted: function () {
+
+  mounted: function() {
+    this.$root.appGetCart()
   },
   updated: function () {
   }

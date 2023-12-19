@@ -17,7 +17,6 @@
 import axios from 'axios'
 
 export default {
-
   mounted: function() {
     this.$root.appGetProducts()
   },
