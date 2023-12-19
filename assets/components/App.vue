@@ -46,7 +46,7 @@ export default {
   mounted: function () {
     axios.get("/appGetProducts")
         .then( (response) => {
-          console.log(response)
+          console.log(response.data)
     });
     $.get("/appGetProducts", (response) => {
       console.log(response)
