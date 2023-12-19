@@ -26,11 +26,10 @@ export default {
   methods: {
     appGetProducts: function(productId) {
       let self = this;
-
       $.get( "/appGetProducts", function( response ) {
+        self.products = response;
         console.log(response);
         alert("AAAA")
-        self.products = response.data;
       });
     },
     productAddToCart: function (product) {
