@@ -29,8 +29,6 @@ export default {
           .then(function (response) {
             console.log(response)
             console.log(response.data)
-            console.log(JSON.parse(response.data))
-            this.products = JSON.parse(response.data);
           })
           .catch(function (error) {
             console.log("hi2")
