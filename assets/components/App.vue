@@ -21,7 +21,7 @@ export default {
   },
   created: function() {
     this.$root.$on('productAddToCart', (product) => {
-      this.productAddToCart(product)
+      this.productAddToCart(Object.assign({}, product))
     })
   },
   methods: {
