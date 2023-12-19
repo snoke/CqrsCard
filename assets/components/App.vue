@@ -45,7 +45,7 @@ export default {
       products: [],
     }
   },
-  mounted: function() {
+  created: function() {
     this.appGetProducts()
   },
   methods: {
