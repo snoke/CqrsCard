@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data: function() {
     return {
@@ -23,7 +24,16 @@ export default {
   },
   methods: {
     addToCart: function(productId) {
-      alert('addToCart');
+      axios.post('/user', {
+        firstName: 'Fred',
+        lastName: 'Flintstone'
+      })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
   },
   mounted: function() {

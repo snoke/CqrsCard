@@ -14,6 +14,7 @@
 
 
 <script>
+import axios from 'axios'
 export default {
   data: function() {
     return {
@@ -23,7 +24,7 @@ export default {
     }
   },
   methods: {
-    checkoutCart: function() {
+    checkout: function() {
       alert('checkout');
     }
   },
