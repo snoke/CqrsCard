@@ -29,7 +29,7 @@ export default {
       axios.get('/appGetProducts')
           .then(function (response) {
             console.log("hi1")
-            console.log(response.data)
+            console.log(JSON.parse(response.data))
             console.log("hi2")
             console.log(response.data.data)
             console.log("hi3")
