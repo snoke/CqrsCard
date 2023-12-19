@@ -13,7 +13,9 @@
             <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(index,product)">remove
             </button>
           </div>
-          <div class="sum">{{ this.cartGetSum(cart, 'price') }}</div>
+        </li>
+        <li>
+          <div class="sum">{{ cartGetSum(cart, 'price') }}</div>
         </li>
       </ul>
     </div>
