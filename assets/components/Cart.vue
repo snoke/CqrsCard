@@ -36,7 +36,6 @@ export default {
     let self = this
     this.$root.$on('cartAddProduct', (product) => {
       console.log("this.$root.$on('cartAddProduct'");
-      self.cart.push(product)
     });
   }
 }
