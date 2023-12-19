@@ -27,7 +27,7 @@ export default {
     appGetProducts: function(productId) {
       axios.get('/appGetProducts')
           .then(function (response) {
-            this.products = response.data.products;
+            this.products = JSON.parse(response.data.products);
           })
           .catch(function (error) {
             console.log("hi2")
