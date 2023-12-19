@@ -108,6 +108,9 @@ new Vue({
     methods: {
         productAddToCart: function(product) {
             this.cart.push(product)
+            console.log(product)
+            console.log(this.cart)
+            alert("hi")
         },
         appGetProducts: function() {
             let parent = this;
