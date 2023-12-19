@@ -35,11 +35,7 @@ class AppController extends AbstractController
      */
     public function cartSave(Request $request, CartSaveCommand $command): JsonResponse
     {
-        var_dump($request->get('card'));
-        $session = $request->getSession();
-        $session->start();
-        $sessionId = $session->getId();
-        $command->execute($request->get('card'),$sessionId);
+        $command->execute($request);
         return new JsonResponse(true);
     }
 
