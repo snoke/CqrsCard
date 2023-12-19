@@ -1,22 +1,17 @@
 <!-- Author: Stefan Sander <mail@stefan-sander.online> -->
 <template>
-    <div id="products-list">
-      <ul>
-        <li v-for="product in products" :key="product.id">
-          <div class="product-name">{{product.name}}</div>
-          <div class="product-price">price: {{product.price}}€</div>
-          <div class="product-add-to-cart">
-            <button type="button" class="btn btn-outline-secondary">add to cart</button>
-          </div>
-        </li>
-      </ul>
-    </div>
+  <div id="app">
+    <Cart></Cart>
+    <Products></Products>
+  </div>
 </template>
 
-
 <script>
+import Products from './Products';
+import Cart from './Cart';
 export default {
   name: 'App',
+  components: {Products,Cart},
   data: function() {
     return {
       products: [
