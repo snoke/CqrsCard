@@ -15,7 +15,9 @@
           </div>
         </li>
         <li>
-          <div class="sum">{{ cartGetSum(cart, 'price') }}</div>
+          <div class="sum">{{ cart.reduce((accumulator, object) => {
+            return accumulator + object['price'];
+          }, 0) }}</div>
         </li>
       </ul>
     </div>
@@ -56,11 +58,6 @@ export default {
         });
   },
   methods: {
-    cartGetSum: function () {
-      return this.cart.reduce((accumulator, object) => {
-        return accumulator + object['price'];
-      }, 0);
-    },
     cartRemoveProduct: function (index, product) {
       this.cart = this.cart.filter(function (element) {
         return element.id !== product.id
