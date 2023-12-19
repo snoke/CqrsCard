@@ -15,9 +15,11 @@
           </div>
         </li>
         <li>
-          <div class="sum">{{ cart.reduce((accumulator, object) => {
-            return accumulator + object['price'];
-          }, 0) }}</div>
+          <div class="sum">{{
+              cart.reduce((accumulator, object) => {
+                return accumulator + object['price'];
+              }, 0)|currency
+            }}</div>
         </li>
       </ul>
     </div>
@@ -44,6 +46,13 @@ import axios from "axios";
 
 export default {
   name: 'App',
+  filters:{
+    currency(value) {
+      return new Intl.NumberFormat("en-US",
+          { style: "currency", currency: "USD" }).format(value);
+    }
+  },
+
   data() {
     return {
       products: [],
