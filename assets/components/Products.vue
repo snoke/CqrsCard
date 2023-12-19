@@ -20,7 +20,6 @@ export default {
   data: function () {
     return {
       products: [
-        {id: 1, name: 'test', price: 2.25}
       ],
     }
   },
@@ -29,10 +28,7 @@ export default {
     appGetProducts: function(productId) {
       axios.get('/appGetProducts')
           .then(function (response) {
-
             this.products = JSON.parse(response.data);
-            console.log(response.data);
-            console.log(this.products);
           })
           .catch(function (error) {
             console.log(error);
