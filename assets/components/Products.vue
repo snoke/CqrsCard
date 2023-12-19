@@ -28,7 +28,11 @@ export default {
     appGetProducts: function(productId) {
       axios.get('/appGetProducts')
           .then(function (response) {
-            console.log("hi")
+            console.log("hi1")
+            console.log(response.data)
+            console.log("hi2")
+            console.log(response.data.data)
+            console.log("hi3")
           })
           .catch(function (error) {
             console.log("hi2")
