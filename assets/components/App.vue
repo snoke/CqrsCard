@@ -22,6 +22,9 @@ export default {
   updated: function() {
   },
   methods: {
+    productAddToCart: function(product) {
+      this.cart.push(product);
+    },
     appGetProducts: function() {
       let parent = this;
       axios.get('/appGetProducts')
