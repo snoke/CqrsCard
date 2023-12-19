@@ -29,6 +29,7 @@ export default {
       axios.get('/appGetProducts')
           .then(function (response) {
             console.log(response.data)
+            this.products = response.data
           })
           .catch(function (error) {
             console.log(error);
