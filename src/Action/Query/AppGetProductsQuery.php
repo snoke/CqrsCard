@@ -18,6 +18,6 @@ class AppGetProductsQuery
 
     public function fetch(Request $request,array $parameters = []): JsonResponse
     {
-        return new JsonResponse(['products' => AppGetProductsResource::get($this->productRepository->findAll())]);
+        return new JsonResponse(['products' => json_encode(AppGetProductsResource::get($this->productRepository->findAll()))]);
     }
 }
