@@ -35,8 +35,6 @@
 </template>
 
 <script>
-import Products from './Products';
-import Cart from './Cart';
 import axios from 'axios'
 export default {
   name: 'App',
