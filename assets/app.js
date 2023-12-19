@@ -110,7 +110,7 @@ new Vue({
             this.cart.push(product)
             console.log(this.cart)
             console.log("this.$root.$emit('cartAddProduct'");
-            this.$root.$emit('cartAddProduct', product);
+            this.$emit('cartAddProduct', product);
         },
         appGetProducts: function() {
             let parent = this;
