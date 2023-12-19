@@ -27,8 +27,9 @@ export default {
     appGetProducts: function(productId) {
       let self = this;
       $.get( "/appGetProducts", function( response ) {
-        self.products = response;
-        console.log(response);
+        let data = JSON.parse(response);
+        self.products = data;
+        console.log(data);
         alert("AAAA")
       });
     },
