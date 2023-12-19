@@ -34,7 +34,7 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
 
         $cart = new Cart();
         $cart->setSessionId($session->getId());
-        $data = json_encode($request->getContent());
+        $data = json_decode($request->getContent());
         var_dump($data);;
         var_dump($request->getContent());die;
         foreach($request->get('cart') as $product) {
