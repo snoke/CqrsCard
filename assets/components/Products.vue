@@ -26,14 +26,6 @@ export default {
 
   methods: {
     appGetProducts: function(productId) {
-      axios.get('/appGetProducts')
-          .then(function (response) {
-            console.log("hi")
-          })
-          .catch(function (error) {
-            console.log("hi2")
-            console.log(error);
-          });
     },
     productAddToCart: function (productId) {
       axios.post('/' + 'addToCart', {
