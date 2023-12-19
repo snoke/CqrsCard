@@ -52,9 +52,10 @@ export default {
     cartRemoveProduct: function(product) {
     },
     cartDecreaseProduct: function(product) {
+      console.log(product)
+      console.log(this.cart)
       let index = this.cart.findIndex((element) => element.id === product.id);
       console.log(index)
-      console.log(this.cart)
       this.cart = this.cart.splice(index, 1);
       console.log(this.cart)
 
