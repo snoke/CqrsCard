@@ -33,6 +33,7 @@
 
 <script>
 import $ from "jquery";
+import axios from "axios";
 
 export default {
   name: 'App',
@@ -43,7 +44,12 @@ export default {
     }
   },
   mounted: function () {
+
+    axios.get("/appGetProducts", (response) => {
+      console.log(response)
+    });
     $.get("/appGetProducts", (response) => {
+      console.log(response)
       this.products = JSON.parse(response);
     });
   },
