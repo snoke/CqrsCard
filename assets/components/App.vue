@@ -53,10 +53,9 @@ export default {
       this.cart.push(product);
     },
     appGetProducts: function() {
-      let parent = this;
       axios.get('/appGetProducts')
           .then(function (response) {
-            parent.products = Object.assign({}, response.data);
+            this.products = Object.assign({}, response.data);
           })
           .catch(function (error) {
             console.log(error);
