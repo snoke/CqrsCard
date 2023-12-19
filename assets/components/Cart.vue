@@ -34,6 +34,7 @@ export default {
   },
   created: function () {
     this.$root.$on('cartAddProduct', (product) => {
+      console.log("this.$root.$on('cartAddProduct'");
       this.cart.push(product)
     });
   }
