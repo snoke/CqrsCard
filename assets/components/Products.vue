@@ -19,7 +19,7 @@ import axios from 'axios'
 export default {
   data: function () {
     return {
-      products: {}
+      products: []
     }
   },
 
@@ -27,7 +27,8 @@ export default {
     appGetProducts: function(productId) {
       axios.get('/appGetProducts')
           .then(function (response) {
-            console.log(response)
+            console.log(response.data)
+            this.products = response.data
           })
           .catch(function (error) {
             console.log("hi2")
