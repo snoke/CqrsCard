@@ -108,6 +108,7 @@ new Vue({
     methods: {
         productAddToCart: function(product) {
             this.cart.push(product)
+            this.$forceUpdate();
             console.log(product)
             console.log(this.cart)
             alert("hi")
