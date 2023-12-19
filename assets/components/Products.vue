@@ -31,7 +31,6 @@ export default {
             console.log(response.data)
             data = response.data
             console.log(data)
-            this.products = data
           })
           .catch(function (error) {
             console.log("hi2")
