@@ -45,7 +45,8 @@ export default {
       products: [],
     }
   },
-  updated: function() {
+  mounted: function() {
+    this.appGetProducts()
   },
   methods: {
     productAddToCart: function(product) {
