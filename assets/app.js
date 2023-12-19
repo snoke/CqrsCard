@@ -126,9 +126,9 @@ new Vue({
                     console.log(error);
                 });
         },
-        productAddToCart: function (productId) {
+        productAddToCart: function (product) {
             axios.post('/' + 'addToCart', {
-                productId: productId,
+                product: product,
             })
         }
     },
