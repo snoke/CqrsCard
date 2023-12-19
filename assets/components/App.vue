@@ -12,8 +12,25 @@ import Cart from './Cart';
 export default {
   name: 'App',
   components: {Products,Cart},
+  data: function() {
+    return {
+      cart: [],
+      products: [],
+    }
+  },
   updated: function() {
   },
-  methods: {}
+  methods: {
+    appGetProducts: function() {
+      let parent = this;
+      axios.get('/appGetProducts')
+          .then(function (response) {
+            parent.products = Object.assign({}, response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    },
+  },
 }
 </script>

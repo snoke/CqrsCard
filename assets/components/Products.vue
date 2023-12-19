@@ -1,7 +1,7 @@
 <template>
   <div id="products">products
     <ul>
-      <li v-for="product in $root.products" :key="product.id" class="product">
+      <li v-for="product in $parent.products" :key="product.id" class="product">
         <div class="name">{{ product.name }}</div>
         <div class="price">price: {{ product.price }}€</div>
         <div class="add-to-cart">
@@ -20,7 +20,7 @@ export default {
   methods: {
   },
   mounted: function() {
-    this.$root.appGetProducts()
+    this.$parent.appGetProducts()
   },
   updated: function () {
   }
