@@ -58,14 +58,15 @@ export default {
       let self = this;
       axios.get('/appGetProducts')
           .then((response) => {
-            console.log(response.data)
             console.log(this.products)
-            //self.products = Object.assign([], response.data);
-            self.products = Object.assign({}, response.data);
+            for(let product of response.data) {
+              console.log(product)
+              this.products.push(product)
+            }
+            //this.products = response.data;
             //self.products = response.data;
             //this.products = Object.assign([], response.data);
             //this.products = Object.assign({}, response.data);
-            //this.products = response.data;
 
           })
           .catch(function (error) {
