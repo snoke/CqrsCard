@@ -44,7 +44,7 @@ export default {
   data: function() {
     return {
       cart: [],
-      products: [],
+      products: null,
     }
   },
   mounted: function() {
@@ -58,16 +58,7 @@ export default {
       let self = this;
       axios.get('/appGetProducts')
           .then((response) => {
-            console.log(this.products)
-            for(let product of response.data) {
-              console.log(product)
-              this.products.push(product)
-            }
-            //this.products = response.data;
-            //self.products = response.data;
-            //this.products = Object.assign([], response.data);
-            //this.products = Object.assign({}, response.data);
-
+            this.products = response.data
           })
           .catch(function (error) {
             console.log(error);
