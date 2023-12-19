@@ -47,10 +47,7 @@ export default {
     axios.get("/appGetProducts")
         .then( (response) => {
           console.log(response.data)
-    });
-    $.get("/appGetProducts", (response) => {
-      console.log(response)
-      this.products = JSON.parse(response);
+          this.products = response.data;
     });
   },
   methods: {
