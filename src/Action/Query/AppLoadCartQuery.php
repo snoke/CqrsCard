@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class AppLoadCartQuery extends AbstractAction  implements QueryInterface
+class AppLoadCartQuery implements QueryInterface
 {
     private CartRepository $cartRepository;
 

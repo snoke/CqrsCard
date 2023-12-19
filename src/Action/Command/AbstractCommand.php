@@ -8,7 +8,7 @@ use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class AbstractCommand extends AbstractAction
+class AbstractCommand
 {
     protected EntityManagerInterface $entityManager;
 
