@@ -7,7 +7,7 @@
         <li v-for="(product,index) in cart" :key="product.id" class="product">
           <div class="name">{{ product.name }}</div>
           <div class="buttons">
-            <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(product)">+</button>
+            <input type="text" id='"amount_"+index'/><button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(product)">+</button>
             <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(index)">-</button>
             <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(product)">remove</button>
           </div>
@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import $ from "jquery";
 import axios from "axios";
 
 export default {
@@ -46,7 +45,6 @@ export default {
   mounted: function () {
     axios.get("/appGetProducts")
         .then( (response) => {
-          console.log(response.data)
           this.products = response.data;
     });
   },
