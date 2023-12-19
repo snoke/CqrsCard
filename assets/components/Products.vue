@@ -35,8 +35,7 @@ export default {
           });
     },
     productAddToCart: function (product) {
-      let x = this.products
-      console.log(this.products)
+      this.products.push(product)
     }
   },
 
