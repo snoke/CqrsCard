@@ -19,16 +19,16 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      products: []
+      products: ["ads"]
     }
   },
   methods: {
     appGetProducts: function(productId) {
+      let self = this;
       axios.get('/appGetProducts')
           .then(function (response) {
             console.log(response.data)
-            console.log(this.data)
-            this.products = Object.assign({}, response.data);
+            self.products = Object.assign({}, response.data);
             alert(response.data)
           })
           .catch(function (error) {
