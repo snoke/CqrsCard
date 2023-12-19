@@ -23,7 +23,9 @@ export default {
   },
   methods: {
     productAddToCart(product) {
-      this.cart.push(Object.assign({}, product));
+      console.log(this.cart)
+      console.log(product)
+      alert("bbbb")
     },
     appGetProducts: function() {
       let parent = this;

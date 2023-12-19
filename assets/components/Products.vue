@@ -29,8 +29,6 @@ export default {
       $.get( "/appGetProducts", function( response ) {
         let data = JSON.parse(response);
         self.products = data;
-        console.log(data);
-        alert("AAAA")
       });
     },
     productAddToCart: function (product) {
