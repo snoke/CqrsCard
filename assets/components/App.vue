@@ -28,9 +28,6 @@ export default {
     appGetProducts: function() {
       let parent = this;
 
-      $.get( "test.php", function( data ) {
-        console.log(data)
-      });
     },
   },
 }

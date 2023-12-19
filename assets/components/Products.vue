@@ -28,6 +28,8 @@ export default {
       let self = this;
 
       $.get( "/appGetProducts", function( response ) {
+        console.log(response);
+        alert("AAAA")
         self.products = response.data;
       });
     },
