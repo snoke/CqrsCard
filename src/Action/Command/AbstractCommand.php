@@ -12,9 +12,8 @@ class AbstractCommand
 {
     protected EntityManagerInterface $entityManager;
 
-    public function __construct(Request $request, EntityManagerInterface $entityManager) {
+    public function __construct(EntityManagerInterface $entityManager) {
 
-        parent::__construct($request);
 
         $this->entityManager = $entityManager;
     }

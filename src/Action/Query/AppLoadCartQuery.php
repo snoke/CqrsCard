@@ -12,12 +12,11 @@ class AppLoadCartQuery implements QueryInterface
 {
     private CartRepository $cartRepository;
 
-    public function __construct(Request $request, CartRepository $cartRepository) {
-        parent::__construct($request);
+    public function __construct(CartRepository $cartRepository) {
         $this->cartRepository = $cartRepository;
     }
 
-    public function fetch(array $parameters = []): JsonResponse
+    public function fetch(Request $request): JsonResponse
     {
         return new JsonResponse(AppGetProductsResource::get($this->cartRepostiroy->findBy(['sessionId' => $parameters['sessionId']])));
     }
