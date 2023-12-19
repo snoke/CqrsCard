@@ -25,13 +25,17 @@ export default {
 
   data: function() {
     return {
+      cart: []
     }
   },
   methods: {
   },
   mounted: function() {
   },
-  updated: function () {
+  created: function () {
+    this.$root.$on('cartAddProduct', (product) => {
+      this.cart.push(product)
+    });
   }
 }
 </script>

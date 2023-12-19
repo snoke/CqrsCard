@@ -100,17 +100,13 @@ Vue.use(device)
 new Vue({
     data: function() {
         return {
-            cart: [],
             products: [],
             config:[],
         }
     },
     methods: {
         productAddToCart: function(product) {
-            this.cart.push(product)
-            console.log(this.cart)
-            console.log(this.$root.cart)
-            this.$forceUpdate();
+            this.$root.$emit('cartAddProduct', product);
         },
         appGetProducts: function() {
             let parent = this;
