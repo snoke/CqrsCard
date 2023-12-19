@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import $ from "jquery";
+
 export default {
   name: 'App',
   data () {
@@ -14,9 +16,22 @@ export default {
     }
   },
   mounted: function(){
+    this.appGetProducts()
     this.test.push(1);
+    let self = this;
+    $.get( "/appGetProducts", function( response ) {
+      let data = JSON.parse(response);
+      self.test = data;
+    });
 },
   methods: {
+    appGetProducts: function() {
+      let self = this;
+      $.get( "/appGetProducts", function( response ) {
+        let data = JSON.parse(response);
+        self.products = data;
+      });
+    },
     },
 }
 </script>
