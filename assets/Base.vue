@@ -10,7 +10,6 @@
 
 <script>
 import App from './components/App';
-import Auth from './components/Auth';
 export default {
   name: 'Base',
     components: {App}
