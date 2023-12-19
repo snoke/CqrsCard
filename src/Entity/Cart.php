@@ -18,6 +18,8 @@ class Cart
     #[ORM\Column]
     private ?int $sessionId = null;
 
+    #[ORM\ManyToMany(targetEntity: Product::class)]
+    private Collection $products;
 
     public function __construct()
     {
@@ -34,7 +36,21 @@ class Cart
 
         return $this;
     }
+    public function addProduct(Product $product): static
+    {
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+        }
 
+        return $this;
+    }
+
+    public function removeProduct(Product $product): static
+    {
+        $this->products->removeElement($product);
+
+        return $this;
+    }
     public function getSessionId(): ?int
     {
         return $this->sessionId;
