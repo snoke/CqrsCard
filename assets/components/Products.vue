@@ -28,11 +28,9 @@ export default {
     appGetProducts: function(productId) {
       axios.get('/appGetProducts')
           .then(function (response) {
-            console.log("hi1")
             console.log(response.data)
-            console.log(JSON.parse(response.data))
             //this.products = JSON.parse(response.data)
-            console.log("hi31")
+            this.products = response.data
           })
           .catch(function (error) {
             console.log("hi2")
