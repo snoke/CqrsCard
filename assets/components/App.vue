@@ -77,11 +77,11 @@ export default {
     }
     ,
     cartIncreaseProduct: function (index, product) {
-      this.productAddToCart(product)
+      this.productAddToCart(index,product,1)
     }
     ,
-    productAddToCart: function (index, product) {
-      for (let i = 0; i < this.$refs['amount_' + index][0].value; i++) {
+    productAddToCart: function (index, product,amount) {
+      for (let i = 0; i < (amount?amount:this.$refs['amount_' + index][0].value); i++) {
         this.cart = [product].concat(this.cart)
       }
     }
