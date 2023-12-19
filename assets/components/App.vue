@@ -23,6 +23,8 @@ export default {
       axios.get('/appGetProducts')
           .then(function (response) {
             this.products = JSON.parse(response.data);
+            console.log(this.products);
+            alert(this.products[0].name)
           })
           .catch(function (error) {
             console.log(error);
