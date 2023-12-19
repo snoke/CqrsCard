@@ -20,6 +20,9 @@ export default {
     }
   },
   created: function() {
+    this.$parent.$on('productAddToCart',function(product) {
+      this.productAddToCart(product)
+    })
     this.$on('productAddToCart',function(product) {
       this.productAddToCart(product)
     })

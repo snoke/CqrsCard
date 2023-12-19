@@ -35,6 +35,7 @@ export default {
           });
     },
     productAddToCart: function (product) {
+      this.$emit('productAddToCart', product)
       this.$parent.$emit('productAddToCart', product)
     }
   },
