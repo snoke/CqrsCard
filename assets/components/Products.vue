@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
   data: function () {
@@ -24,16 +25,18 @@ export default {
 
   methods: {
     appGetProducts: function(productId) {
+      let data;
       axios.get('/appGetProducts')
           .then(function (response) {
             console.log(response.data)
-            let data = response.data
+            data = response.data
             console.log(data)
             this.products = data
           })
           .catch(function (error) {
             console.log("hi2")
             console.log(error);
+            console.log(data)
           });
     },
     productAddToCart: function (productId) {
