@@ -24,14 +24,29 @@ export default {
       ],
     }
   },
+
   methods: {
+    appGetProducts: function(productId) {
+      axios.get('/appGetProducts')
+          .then(function (response) {
+            console.log((response.data);
+
+            this.products = JSON.parse(response.data);
+            console.log(this.products);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    },
     productAddToCart: function (productId) {
       axios.post('/' + 'addToCart', {
         productId: productId,
       })
     }
   },
-  mounted: function () {
+
+  mounted: function() {
+    this.appGetProducts()
   },
   updated: function () {
   }
