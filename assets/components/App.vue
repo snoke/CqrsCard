@@ -18,7 +18,7 @@ export default {
   mounted: function(){
     //this.test.push(1);
     let self = this;
-    $.get( "/appGetProducts", function( response ) {
+    $.get( "/appGetProducts", ( response ) => {
       let data = JSON.parse(response);
       this.test = data;
     });
