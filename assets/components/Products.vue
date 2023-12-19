@@ -34,7 +34,8 @@ export default {
           });
     },
     productAddToCart: function (product) {
-      this.$root.$emit('productAddToCart', Object.assign({}, product))
+      this.$parent.productAddToCart(product)
+      //this.$root.$emit('productAddToCart', Object.assign({}, product))
     }
   },
 
