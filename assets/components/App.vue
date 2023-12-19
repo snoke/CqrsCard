@@ -1,8 +1,21 @@
 <!-- Author: Stefan Sander <mail@stefan-sander.online> -->
 <template>
   <div id="app">
-    {{ test }}
+
+    <div id="products">products
+      <ul>
+        <li v-for="product in products" :key="product.id" class="product">
+          <div class="name">{{ product.name }}</div>
+          <div class="price">price: {{ product.price }}€</div>
+          <div class="add-to-cart">
+            <button type="button" class="btn btn-outline-primary" @click="$parent.productAddToCart(product)">add to cart
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -12,25 +25,18 @@ export default {
   name: 'App',
   data () {
     return {
-      test: [],
+      products: [],
+      card: []
     }
   },
   mounted: function(){
     //this.test.push(1);
-    let self = this;
     $.get( "/appGetProducts", ( response ) => {
       let data = JSON.parse(response);
-      this.test = data;
+      this.products = data;
     });
 },
   methods: {
-    appGetProducts: function() {
-      let self = this;
-      $.get( "/appGetProducts", function( response ) {
-        let data = JSON.parse(response);
-        self.products = data;
-      });
-    },
     },
 }
 </script>
