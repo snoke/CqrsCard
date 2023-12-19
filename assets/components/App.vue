@@ -20,7 +20,8 @@
           cart.reduce((accumulator, object) => {
             return accumulator + object['price'];
           }, 0) | currency
-        }}</div>
+        }}
+      </div>
       <button type="button" class="btn btn-outline-primary" @click="cartCheckout()">checkout
       </button>
     </div>
@@ -47,10 +48,10 @@ import axios from "axios";
 
 export default {
   name: 'App',
-  filters:{
+  filters: {
     currency(value) {
       return new Intl.NumberFormat("en-US",
-          { style: "currency", currency: "USD" }).format(value);
+          {style: "currency", currency: "USD"}).format(value);
     }
   },
 
@@ -69,24 +70,25 @@ export default {
   },
   methods: {
     cartCheckout: function () {
-      alert("check it out now!")
+      axios.post("/cartCheckout", this.cart)
+          .then((response) => {
+            console.log(response)
+            alert("ok")
+          });
     },
     cartRemoveProduct: function (index, product) {
       this.cart = this.cart.filter(function (element) {
         return element.id !== product.id
       })
-    }
-    ,
+    },
     cartDecreaseProduct: function (index, product) {
       this.cart.splice(index, 1)
-    }
-    ,
+    },
     cartIncreaseProduct: function (index, product) {
-      this.productAddToCart(index,product,1)
-    }
-    ,
-    productAddToCart: function (index, product,amount) {
-      for (let i = 0; i < (amount?amount:this.$refs['amount_' + index][0].value); i++) {
+      this.productAddToCart(index, product, 1)
+    },
+    productAddToCart: function (index, product, amount) {
+      for (let i = 0; i < (amount ? amount : this.$refs['amount_' + index][0].value); i++) {
         this.cart = [product].concat(this.cart)
       }
     }
