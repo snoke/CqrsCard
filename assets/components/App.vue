@@ -60,7 +60,7 @@ export default {
     cartIncreaseProduct: function(index,product) {
       alert("hi")
       console.log(this.$refs)
-      for(let i = 0; i > this.$refs['amount_' + index]; i++) {
+      for(let i = 0; i < this.$refs['amount_' + index]; i++) {
         this.productAddToCart(product)
       }
     },
