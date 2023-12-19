@@ -8,16 +8,15 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class AppGetProductsQuery  extends AbstractAction  implements QueryInterface
+class AppGetProductsQuery
 {
     private ProductRepository $productRepository;
 
-    public function __construct(Request $request, ProductRepository $productRepository) {
-        parent::__construct($request);
+    public function __construct(ProductRepository $productRepository) {
         $this->productRepository = $productRepository;
     }
 
-    public function fetch(array $parameters = []): JsonResponse
+    public function fetch(Request $request,array $parameters = []): JsonResponse
     {
         return new JsonResponse(AppGetProductsResource::get($this->productRepository->findAll()));
     }
