@@ -30,6 +30,7 @@ export default {
     },
   },
   mounted: function() {
+    this.appGetProducts()
   },
   updated: function() {
   }
