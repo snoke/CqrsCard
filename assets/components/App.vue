@@ -52,12 +52,16 @@ export default {
     cartRemoveProduct: function(product) {
     },
     cartDecreaseProduct: function(product) {
-      console.log(product)
-      console.log(this.cart)
-      let index = this.cart.findIndex((element) => element.id === product.id);
+      let array = [1,2,3,4,2]
+      let index = array.findIndex((e) => { return e === 2};
+      console.log(array)
+      array.splide(index,1)
+      console.log(array)
+      //console.log(this.cart)
+      //let index = this.cart.findIndex((element) => element.id === product.id);
       console.log(index)
       //this.cart = this.cart.splice(index, 1);
-      delete this.cart[index]
+      //delete this.cart[index]
       console.log(this.cart)
 
     },
