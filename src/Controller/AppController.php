@@ -16,7 +16,7 @@ class AppController extends AbstractController
      */
     public function test($client="web",$route=null): Response
     {
-        return $this->render('app/index.html.twig', [
+        return $this->render('app/test.html.twig', [
             'controller_name' => 'ApptestController',
         ]);
     }
