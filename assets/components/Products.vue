@@ -17,12 +17,9 @@
 import axios from 'axios'
 
 export default {
-  data: function () {
-    return {
-      products: null
-    }
+  data: {
+    products: []
   },
-
   methods: {
     appGetProducts: function(productId) {
       let data;
