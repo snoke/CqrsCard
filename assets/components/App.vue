@@ -56,9 +56,9 @@ export default {
         });
   },
   methods: {
-    cartGetSum: function (array, property) {
-      return array.reduce((accumulator, object) => {
-        return accumulator + object[property];
+    cartGetSum: function () {
+      return this.cart.reduce((accumulator, object) => {
+        return accumulator + object['price'];
       }, 0);
     },
     cartRemoveProduct: function (index, product) {
