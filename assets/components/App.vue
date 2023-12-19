@@ -13,7 +13,7 @@ export default {
       test: [],
     }
   },
-  mounted: () => {
+  mounted: function(){
     this.test.push(1);
 },
   methods: {
