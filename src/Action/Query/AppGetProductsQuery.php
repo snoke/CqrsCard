@@ -15,13 +15,6 @@ class AppGetProductsQuery implements QueryInterface
 
     public function fetch(array $parameters = []): JsonResponse
     {
-        try {
-            $e = AppGetProductsResource::get($this->productRepository->findAll());
-
-        } catch(\Throwable $e) {
-            var_dump($e->getMessage());
-        }
-        die("ASDDDD");
-        return new JsonResponse($e);
+        return new JsonResponse(AppGetProductsResource::get($this->productRepository->findAll()));
     }
 }

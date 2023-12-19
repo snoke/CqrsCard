@@ -28,5 +28,6 @@ class CartSaveCommand
 
         $this->entityManager->persist($cart);
         $this->entityManager->flush();
+        return true;
     }
 }

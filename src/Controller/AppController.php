@@ -26,6 +26,8 @@ class AppController extends AbstractController
      */
     public function index($client="web",$route=null): Response
     {
+        var_dump($_SESSION);
+        die;
         return $this->render('app/index.html.twig', );
     }
 }
