@@ -34,14 +34,13 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
 
         $cart = new Cart();
         $cart->setSessionId($session->getId());
-        $data = json_decode($request->getContent(),true);
         foreach(json_decode($request->getContent(),true) as $product) {
             $entity = $serializer->deserialize(json_encode($product), Product::class, 'json');
 
-            $cart->addProduct($entity);
+            //$cart->addProduct($entity);
         }
-        $this->entityManager->persist($cart);
-        $this->entityManager->flush();
+        //$this->entityManager->persist($cart);
+        //$this->entityManager->flush();
         return true;
     }
 }
