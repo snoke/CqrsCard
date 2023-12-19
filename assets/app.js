@@ -40,9 +40,6 @@ var router = {
 router = new VueRouter(router);
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-Vue.use(VueAxios, axios)
 import device from "vue-device-detector"
 Vue.use(device)
 
