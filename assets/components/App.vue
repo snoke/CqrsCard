@@ -15,7 +15,7 @@ import axios from 'axios'
 export default {
   name: 'App',
   components: {Products,Cart},
-  data: () => {
+  data () {
     return {
       cart: [],
       products: [],
@@ -25,7 +25,7 @@ export default {
     productAddToCart(product) {
       console.log(this.cart)
       console.log(product)
-      this.cart.push({})
+      this.cart.push(product)
       alert("bbbb")
     },
     appGetProducts: function() {
