@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import Products from './Products';
 import Cart from './Cart';
 export default {

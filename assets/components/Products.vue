@@ -17,16 +17,16 @@
 import axios from 'axios'
 
 export default {
-  data: {
-    products: []
+  data: function () {
+    return {
+      count: 0
+    }
   },
   methods: {
     appGetProducts: function(productId) {
-      let data;
       axios.get('/appGetProducts')
           .then(function (response) {
             console.log(response.data)
-            this.products = response.data
           })
           .catch(function (error) {
             console.log(error);
