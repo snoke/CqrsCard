@@ -15,14 +15,12 @@
             </button>
           </div>
         </li>
-        <li>
-          <div class="sum">{{
-              cart.reduce((accumulator, object) => {
-                return accumulator + object['price'];
-              }, 0) | currency
-            }}</div>
-        </li>
       </ul>
+      <div class="sum">{{
+          cart.reduce((accumulator, object) => {
+            return accumulator + object['price'];
+          }, 0) | currency
+        }}</div>
     </div>
 
     <div id="products">products
