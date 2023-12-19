@@ -10,14 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AbstractCommand
 {
-    protected $session;
 
     protected EntityManagerInterface $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager) {
 
-        $this->session = $request->getSession();
-        $this->session->start();
         $this->entityManager = $entityManager;
     }
 
