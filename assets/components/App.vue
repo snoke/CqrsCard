@@ -56,7 +56,8 @@ export default {
       console.log(this.cart)
       let index = this.cart.findIndex((element) => element.id === product.id);
       console.log(index)
-      this.cart = this.cart.splice(index, 1);
+      //this.cart = this.cart.splice(index, 1);
+      delete this.cart[index]
       console.log(this.cart)
 
     },
