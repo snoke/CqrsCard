@@ -1,15 +1,17 @@
 <!-- Author: Stefan Sander <mail@stefan-sander.online> -->
 <template>
   <div id="app">
-
     <div id="cart">cart
       <ul>
         <li v-for="(product,index) in cart" :key="product.id" class="product">
           <div class="name">{{ product.name }}</div>
           <div class="buttons">
-            <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(index,product)">+</button>
-            <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(index,product)">-</button>
-            <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(index,product)">remove</button>
+            <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(index,product)">+
+            </button>
+            <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(index,product)">-
+            </button>
+            <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(index,product)">remove
+            </button>
           </div>
         </li>
       </ul>
@@ -21,7 +23,8 @@
           <div class="name">{{ product.name }}</div>
           <div class="price">price: {{ product.price }}€</div>
           <div class="add-to-cart">
-            <input type="text" :ref="'amount_'+index" value="1"/><button type="button" class="btn btn-outline-primary" @click="productAddToCart(index,product)">add to cart
+            <input type="text" :ref="'amount_'+index" value="1"/>
+            <button type="button" class="btn btn-outline-primary" @click="productAddToCart(index,product)">add to cart
             </button>
           </div>
         </li>
@@ -44,25 +47,24 @@ export default {
   },
   mounted: function () {
     axios.get("/appGetProducts")
-        .then( (response) => {
+        .then((response) => {
           this.products = response.data;
-    });
+        });
   },
   methods: {
-    cartRemoveProduct: function(index,product) {
-      this.cart = this.cart.filter(function(element) {
+    cartRemoveProduct: function (index, product) {
+      this.cart = this.cart.filter(function (element) {
         return element.id !== product.id
       })
     },
-    cartDecreaseProduct: function(index,product) {
-      this.cart.splice(index,1)
+    cartDecreaseProduct: function (index, product) {
+      this.cart.splice(index, 1)
     },
-    cartIncreaseProduct: function(index,product) {
-        this.productAddToCart(product)
+    cartIncreaseProduct: function (index, product) {
+      this.productAddToCart(product)
     },
-    productAddToCart: function (index,product) {
-      console.log(this.$refs)
-      for(let i = 1; i < this.$refs['amount_' + index][0].value; i++) {
+    productAddToCart: function (index, product) {
+      for (let i = 0; i < this.$refs['amount_' + index][0].value; i++) {
         this.cart = [product].concat(this.cart)
       }
     }
