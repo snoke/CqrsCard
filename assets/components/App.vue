@@ -62,7 +62,7 @@ export default {
     },
     productAddToCart: function (index,product) {
       console.log(this.$refs)
-      for(let i = 0; i < this.$refs['amount_' + index][0].value; i++) {
+      for(let i = 1; i < this.$refs['amount_' + index][0].value; i++) {
         this.cart = [product].concat(this.cart)
       }
       this.cart = [product].concat(this.cart)
