@@ -2,6 +2,13 @@
 <template>
   <div id="app">
 
+    <div id="cart">cart{{cart}}
+      <ul>
+        <li v-for="product in cart" :key="product.id" class="product">
+          <div class="name">{{ product.name }}</div>
+        </li>
+      </ul>
+    </div>
 
     <div id="products">products
       <ul>
