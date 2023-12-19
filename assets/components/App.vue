@@ -19,7 +19,10 @@ export default {
       products: [],
     }
   },
-  updated: function() {
+  created: function() {
+    this.$on('productAddToCart',function(product) {
+      this.productAddToCart(product)
+    })
   },
   methods: {
     productAddToCart: function(product) {
