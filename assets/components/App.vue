@@ -16,11 +16,11 @@ export default {
     }
   },
   mounted: function(){
-    this.test.push(1);
+    //this.test.push(1);
     let self = this;
     $.get( "/appGetProducts", function( response ) {
       let data = JSON.parse(response);
-      self.test = data;
+      this.test = data;
     });
 },
   methods: {
