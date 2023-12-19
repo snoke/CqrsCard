@@ -61,6 +61,7 @@ export default {
             this.products = response.data
           })
           .catch(function (error) {
+            console.log(error);
           });
     },
   },
