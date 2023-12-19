@@ -1,6 +1,6 @@
 <!-- Author: Stefan Sander <mail@stefan-sander.online> -->
 <template>
-  <div id="app"> base
+  <div id="base">
       <router-view></router-view>
     </div>
 </template>
@@ -12,7 +12,7 @@
 import App from './components/App';
 export default {
   name: 'Base',
-    components: {App},
+  components: {App},
   methods: {
     go(page) {
       this.$router.push({name: page})

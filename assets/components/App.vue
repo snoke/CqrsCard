@@ -1,6 +1,15 @@
 <!-- Author: Stefan Sander <mail@stefan-sander.online> -->
 <template>
-    <div id="layout " style="height:100vh;">app
+    <div id="products-list">
+      <ul>
+        <li v-for="product in products" :key="product.id">
+          <div class="product-name">{{product.name}}</div>
+          <div class="product-price">price: {{product.price}}€</div>
+          <div class="product-add-to-cart">
+            <button type="button" class="btn btn-outline-secondary">add to cart</button>
+          </div>
+        </li>
+      </ul>
     </div>
 </template>
 
@@ -10,8 +19,10 @@ export default {
   name: 'App',
   data: function() {
     return {
-        active:null,
-      }
+      products: [
+        { id: 1, name: 'test', price:2.25}
+      ],
+    }
   },
   methods: {
   },
