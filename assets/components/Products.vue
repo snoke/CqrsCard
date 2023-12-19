@@ -5,7 +5,7 @@
         <div class="name">{{ product.name }}</div>
         <div class="price">price: {{ product.price }}€</div>
         <div class="add-to-cart">
-          <button type="button" class="btn btn-outline-primary" @click="productAddToCart(product)">add to cart
+          <button type="button" class="btn btn-outline-primary" @click="$parent.productAddToCart(product)">add to cart
           </button>
         </div>
       </li>
@@ -15,6 +15,7 @@
 
 <script>
 import axios from 'axios'
+import $ from "jquery";
 
 export default {
   data() {
@@ -25,17 +26,13 @@ export default {
   methods: {
     appGetProducts: function(productId) {
       let self = this;
-      axios.get('/appGetProducts')
-          .then(function (response) {
-            self.products = response.data;
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+
+      $.get( "/appGetProducts", function( data ) {
+        self.products = data;
+      });
     },
     productAddToCart: function (product) {
       this.$parent.productAddToCart(product)
-      //this.$root.$emit('productAddToCart', Object.assign({}, product))
     }
   },
 
