@@ -21,6 +21,8 @@
             return accumulator + object['price'];
           }, 0) | currency
         }}</div>
+      <button type="button" class="btn btn-outline-primary" @click="cartCheckout()">checkout
+      </button>
     </div>
 
     <div id="products">products
