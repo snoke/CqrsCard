@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Websocket Chat{% endblock %}
+
+{% block body %}
+<script id="_symfonyData" type="application/json">
+  {
+    {% for k,v in config %}
+    "{{k}}": "{{v}}",
+    {% endfor %}
+    "_null":"null"
+  }
+</script>
+
+<div id="app">
+    <app></app>
+</div>
+{% endblock %}
