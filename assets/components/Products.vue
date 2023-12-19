@@ -19,11 +19,11 @@ import axios from 'axios'
 export default {
   methods: {
     productAddToCart: function(product) {
-      this.$parent.cart.push(product)
+      this.$root.cart.push(product)
     }
   },
   mounted: function() {
-    this.$parent.appGetProducts()
+    this.$root.appGetProducts()
   },
   updated: function () {
   }

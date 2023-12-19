@@ -100,6 +100,7 @@ Vue.use(device)
 new Vue({
     data: function() {
         return {
+            cart: [],
             products: [],
             config:[],
         }

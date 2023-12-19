@@ -13,6 +13,7 @@ export default {
   name: 'App',
   components: {Products,Cart},
   updated: function() {
-  }
+  },
+  methods: {}
 }
 </script>
