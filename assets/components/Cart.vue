@@ -33,9 +33,10 @@ export default {
   mounted: function() {
   },
   created: function () {
+    let self = this
     this.$root.$on('cartAddProduct', (product) => {
       console.log("this.$root.$on('cartAddProduct'");
-      this.cart.push(product)
+      self.cart.push(product)
     });
   }
 }
