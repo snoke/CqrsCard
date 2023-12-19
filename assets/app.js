@@ -100,22 +100,11 @@ Vue.use(device)
 new Vue({
     data: function() {
         return {
-            cart: [{id: 1, name: 'test', price: 2.25},{id: 1, name: 'test', price: 2.25}],
             products: [],
             config:[],
         }
     },
     methods: {
-        appGetCart: function() {
-            let parent = this;
-            axios.get('/appGetCart')
-                .then(function (response) {
-                    parent.cart = Object.assign({}, response.data);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        },
         appGetProducts: function() {
             let parent = this;
             axios.get('/appGetProducts')
@@ -126,11 +115,6 @@ new Vue({
                     console.log(error);
                 });
         },
-        productAddToCart: function (product) {
-            axios.post('/' + 'addToCart', {
-                product: product,
-            })
-        }
     },
     el: '#app',
     render: h => h(Base),  router: router,

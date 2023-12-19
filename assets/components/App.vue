@@ -12,10 +12,6 @@ import Cart from './Cart';
 export default {
   name: 'App',
   components: {Products,Cart},
-  data: function() {
-    return {
-    }
-  },
   updated: function() {
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div id="cart">
     <ul>
-      <li v-for="product in $root.cart" :key="product.id" class="product">
+      <li v-for="product in cart" :key="product.id" class="product">
         <div class="name">{{ product.name }}</div>
         <div class="price">price: {{ product.price }}€</div>
         <div class="buttons">
@@ -23,8 +23,25 @@ import axios from 'axios'
 
 export default {
 
+  data: function() {
+    return {
+      cart: [],
+    }
+  },
+  methods: {
+    appGetCart: function() {
+      let $this = this;
+      axios.get('/appGetCart')
+          .then(function (response) {
+            $this.cart = Object.assign({}, response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    },
+  },
   mounted: function() {
-    this.$root.appGetCart()
+    this.appGetCart()
   },
   updated: function () {
   }
