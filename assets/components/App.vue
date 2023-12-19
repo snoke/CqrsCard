@@ -56,7 +56,6 @@ export default {
       let parent = this;
       axios.get('/appGetProducts')
           .then(function (response) {
-            parent.products = Object.assign({}, response.data);
           })
           .catch(function (error) {
             console.log(error);
