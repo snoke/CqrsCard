@@ -53,7 +53,7 @@ export default {
     },
     cartDecreaseProduct: function(product) {
       let array = [1,2,3,4,2]
-      let index = array.findIndex((e) => { return e === 2};
+      let index = array.findIndex((e) => { return e === 2});
       console.log(array)
       array.splide(index,1)
       console.log(array)
