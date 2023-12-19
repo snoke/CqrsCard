@@ -30,6 +30,9 @@ export default {
   methods: {
   },
   mounted: function() {
+    this.$root.$on('cartUpdated', () => {
+      alert("hey")
+    });
   },
   updated: function () {
   }
