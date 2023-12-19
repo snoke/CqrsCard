@@ -28,7 +28,9 @@ class AppController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        var_dump($request->getSession());
+        $session = $request->getSession();
+        $session->start();
+        var_dump($session->getId());
         die;
         return $this->render('app/index.html.twig', );
     }
