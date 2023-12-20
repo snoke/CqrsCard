@@ -30,8 +30,6 @@ class ApiController extends AbstractController
     {
         $sessionId = $requestStack->getSession()->get('sessionId');
         $command = new CartSaveCommand($sessionId,json_decode($requestStack->getCurrentRequest()->getContent(),true)['cart']);
-        $entityManager->persist($command);
-        $entityManager->flush();
         return new JsonResponse($handler->execute($requestStack,$command));
     }
 
