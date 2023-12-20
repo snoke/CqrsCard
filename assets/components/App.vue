@@ -33,7 +33,7 @@
             }}
           </div>
           <div class="w-100 text-center">
-            <button type="button" class="btn btn-outline-primary" @click="cartCheckout()">checkout
+            <button type="button" class="btn btn-outline-primary button-checkout" @click="cartCheckout()">checkout
             </button>
           </div>
         </div>
