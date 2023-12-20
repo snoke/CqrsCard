@@ -7,7 +7,7 @@
 
         <div id="cart">cart
           <ul>
-            <li v-for="(entry,productId) in this.cartTransformed" :key="productId" class="product" v-if="products">
+            <li v-for="(entry,productId) in this.cartTransformed" :key="productId" class="product" v-if="productId">
               <div class="name">Name: {{ entry['entity'].name }}</div>
               <div class="price">Price: {{ entry['entity'].price | currency }}</div>
               <div class="amount">Amount: {{ entry['amount'] }}</div>
