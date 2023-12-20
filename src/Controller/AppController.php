@@ -55,7 +55,7 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/cartLoad", name="cartLoad")
+     * @Route("/appGetCard", name="appGetCard")
      */
     public function appGetCard(Request $request, AppGetCardQuery $query): JsonResponse
     {
