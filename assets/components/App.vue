@@ -1,45 +1,26 @@
 <!-- Author: Stefan Sander <mail@stefan-sander.online> -->
 <template>
   <div id="app">
-
-    <div class="test">
-      {{cartTransformed}}
-      <li v-for="(products,productId) in this.cartTransformed" :key="productId" class="product" v-if="products">
-
-        products:{{products}}
-        id:{{productId}}
-        <div class="name">Name: {{ products[0].name }}</div>
-        <div class="price">Price: {{ products[0].price | currency }}</div>
-        <div class="priceSubTotal">Price subtotal: {{ products[0].price * products.length | currency }}</div>
-        <div class="buttons">
-          <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(index,products[0])">+
-          </button>
-          <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(index,products[0])">-
-          </button>
-          <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(index,products[0])">remove
-          </button>
-        </div>
-
-      </li>
-    </div>
-
     <div class="row">
 
       <div class="col-auto">
 
         <div id="cart">cart
           <ul>
-            <li v-for="(product,index) in this.cart" :key="product.id" class="product">
-              <div class="name">Name: {{ product.name }}</div>
-              <div class="price">Price: {{ product.price | currency }}</div>
+            <li v-for="(products,productId) in this.cartTransformed" :key="productId" class="product" v-if="products">
+              <div class="name">Name: {{ products[0].name }}</div>
+              <div class="price">Price: {{ products[0].price | currency }}</div>
+              <div class="amount">Amount: {{ products.length }}</div>
+              <div class="priceSubTotal">Price subtotal: {{ products[0].price * products.length | currency }}</div>
               <div class="buttons">
-                <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(index,product)">+
+                <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(index,products[0])">+
                 </button>
-                <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(index,product)">-
+                <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(index,products[0])">-
                 </button>
-                <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(index,product)">remove
+                <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(index,products[0])">remove
                 </button>
               </div>
+
             </li>
           </ul>
           <div class="sum" style="text-align: center">Total: {{
