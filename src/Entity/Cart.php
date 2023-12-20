@@ -18,12 +18,8 @@ class Cart
     #[ORM\Column]
     private ?string $sessionId = null;
 
-    #[ORM\ManyToMany(targetEntity: Product::class)]
-    private Collection $products;
-
     public function __construct()
     {
-        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -34,19 +30,6 @@ class Cart
     public function setSessionId(string $sessionId): static
     {
         $this->sessionId = $sessionId;
-
-        return $this;
-    }
-    public function addProduct(Product $product): static
-    {
-            $this->products->add($product);
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): static
-    {
-        $this->products->removeElement($product);
 
         return $this;
     }

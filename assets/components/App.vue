@@ -63,24 +63,19 @@ export default {
     }
   },
   mounted: function () {
-    console.log(this.products);
-    console.log(this.cart);
-    axios.get("/appGetCard?sessionId="+this.$root.config.sessionId)
+    axios.get("/appGetCard?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
           this.cart = response.data;
         });
-    axios.get("/appGetProducts?sessionId="+this.$root.config.sessionId)
+    axios.get("/appGetProducts?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
           this.products = response.data;
-          console.log(response.data);
         });
   },
   methods: {
     cartCheckout: function () {
-      axios.post("/cartSave?sessionId="+this.$root.config.sessionId, {cart: this.cart})
+      axios.post("/cartSave?sessionId=" + this.$root.config.sessionId, {cart: this.cart})
           .then((response) => {
-            console.log(response)
-            alert("ok")
           });
     },
     cartRemoveProduct: function (index, product) {
