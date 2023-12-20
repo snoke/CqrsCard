@@ -38,9 +38,7 @@ class Cart
     }
     public function addProduct(Product $product): static
     {
-        if (!$this->products->contains($product)) {
             $this->products->add($product);
-        }
 
         return $this;
     }

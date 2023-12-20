@@ -28,17 +28,16 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
     {
         $session = $request->getSession();
         $session->start();
-        $encoders = [new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer()];
-        $serializer = new Serializer($normalizers, $encoders);
 
         $cart = new Cart();
         $cart->setSessionId($session->getId());
-        foreach(json_decode($request->getContent(),true) as $product) {
-            var_dump($product);
-            $cart->addProduct($this->productRepository->find($product[0]['id']));
-        }
         $this->entityManager->persist($cart);
+        foreach(json_decode($request->getContent(),true) as $product) {
+            var_dump($this->productRepository->find($product[0]['id']));
+            $x = $this->productRepository->find($product[0]['id']);
+            $cart->addProduct($x);
+            $this->entityManager->persist($x);
+        }
         $this->entityManager->flush();
         return true;
     }
