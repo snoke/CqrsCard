@@ -8,16 +8,16 @@ use App\Resources\AppGetProductsResource;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class AppGetProductsQuery extends Query implements QueryInterface
+class AppGetProductsQuery
 {
-    private ProductRepository $productRepository;
+    private string $sessionId;
 
-    public function __construct(ProductRepository $productRepository) {
-        $this->productRepository = $productRepository;
+    public function __construct(string $sessionId) {
+        $this->sessionId = $sessionId;
     }
 
-    public function fetch(RequestStack $requestStack,array $parameters = []): Response
-    {
-        return new Response(json_encode(AppGetProductsResource::get($this->productRepository->findAll())));
+    public function getSessionId() {
+        return $this->sessionId;
     }
+
 }

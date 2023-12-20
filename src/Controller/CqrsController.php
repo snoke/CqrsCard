@@ -10,6 +10,7 @@ use App\Cqrs\Command\CartSaveCommandHandler;
 use App\Cqrs\Query\AppGetCardQuery;
 use App\Cqrs\Query\AppGetCardQueryHandler;
 use App\Cqrs\Query\AppGetProductsQuery;
+use App\Cqrs\Query\AppGetProductsQueryHandler;
 use App\Repository\CartRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,9 +38,10 @@ class CqrsController extends AbstractController
     /**
      * @Route("/appGetProducts", name="AppGetProducts")
      */
-    public function appGetProducts(RequestStack $requestStack, AppGetProductsQuery $query): Response
+    public function appGetProducts(RequestStack $requestStack, AppGetProductsQueryHandler $handler): Response
     {
-         return $query->fetch($requestStack);
+        $query = new AppGetProductsQuery($requestStack->getSession()->get('sessionId'));
+        return $handler->fetch($query);
     }
 
     /**
