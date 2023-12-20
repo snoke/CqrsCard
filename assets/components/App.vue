@@ -95,7 +95,7 @@ export default {
       }
       return array;
     }
-  }
+  },
   mounted: function () {
     axios.get("/query/appGetCard?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
