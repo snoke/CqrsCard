@@ -72,7 +72,6 @@ class AppController extends AbstractController
             $session->start();
         }
         $sessionId = $session->get('sessionId')?:$session->getId();
-        var_dump($sessionId);
         die;
         return $this->render('app/index.html.twig', [
             'config' => [
