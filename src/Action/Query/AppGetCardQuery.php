@@ -4,10 +4,7 @@ namespace App\Action\Query;
 use App\Repository\CartRepository;
 use App\Repository\CartProductRepository;
 use App\Resources\AppGetCartResource;
-use App\Resources\AppGetProductsResource;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class AppGetCardQuery implements QueryInterface

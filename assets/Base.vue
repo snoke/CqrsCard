@@ -7,7 +7,6 @@
 <style>
 </style>
 
-
 <script>
 import App from './components/App';
 export default {

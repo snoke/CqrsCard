@@ -4,9 +4,7 @@ namespace App\Action\Query;
 use App\Action\AbstractAction;
 use App\Repository\ProductRepository;
 use App\Resources\AppGetProductsResource;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class AppGetProductsQuery

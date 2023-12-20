@@ -4,8 +4,6 @@ namespace App\Resources;
 
 use App\Entity\Cart;
 use App\Entity\CartProduct as CartProduct;
-use App\Entity\Product as ProductEntity;
-use Doctrine\ORM\EntityManagerInterface;
 
 class AppGetCartResource
 {

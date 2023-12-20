@@ -2,7 +2,6 @@
 namespace App\Resources;
 
 use App\Entity\Product as ProductEntity;
-use Doctrine\ORM\EntityManagerInterface;
 
 class AppGetProductsResource
 {
