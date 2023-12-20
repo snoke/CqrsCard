@@ -65,7 +65,7 @@ export default {
   mounted: function () {
     axios.get("/appGetCard?sessionId="+this.$root.config.sessionId)
         .then((response) => {
-          this.card = response.data;
+          this.card = [].concat(response.data);
           console.log(response.data);
         });
     axios.get("/appGetProducts?sessionId="+this.$root.config.sessionId)
