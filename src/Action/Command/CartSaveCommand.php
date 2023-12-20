@@ -29,6 +29,7 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
         if (!$session->isStarted()) {
             $session->start();
         }
+        var_dump($session->getId());
 
         foreach($this->cartRepository->findBy(['sessionId' => $session->getId()]) as $cart) {
             $this->entityManager->remove($cart);

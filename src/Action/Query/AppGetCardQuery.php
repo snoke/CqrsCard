@@ -24,6 +24,7 @@ class AppGetCardQuery implements QueryInterface
         if (!$session->isStarted()) {
             $session->start();
         }
+        var_dump($session->getId());
         return new JsonResponse(AppGetProductsResource::get($this->cartRepository->findBy(['sessionId' => $session->getId()])));
     }
 }
