@@ -85,11 +85,15 @@ export default {
       sum: 0,
     }
   },
+  watch: {
+    cart: function (val) {
+      this.cartTransformed = this.transformCart(val)
+    },
+  },
   mounted: function () {
     axios.get("/query/appGetCard?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
           this.cart = response.data;
-          this.cartTransformed = this.transformCart(response.data);
         });
     axios.get("/query/appGetProducts?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
