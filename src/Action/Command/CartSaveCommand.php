@@ -7,6 +7,7 @@ use App\Repository\CartRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class CartSaveCommand extends AbstractCommand implements CommandInterface
 {
@@ -21,9 +22,9 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
         $this->productRepository = $productRepository;
     }
 
-    public function execute(Request $request): int
+    public function execute(RequestStack $requestStack): int
     {
-        $session = $request->getSession();
+        $session = $requestStack->getSession();
         $session->start();
 
         foreach($this->cartRepository->findBy(['sessionId' => $session->getId()]) as $cart) {

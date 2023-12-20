@@ -7,6 +7,7 @@ use App\Resources\AppGetProductsResource;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class AppGetCardQuery implements QueryInterface
 {
@@ -16,9 +17,9 @@ class AppGetCardQuery implements QueryInterface
         $this->cartRepository = $cartRepository;
     }
 
-    public function fetch(Request $request): JsonResponse
+    public function fetch(RequestStack $requestStack): JsonResponse
     {
-        $session = $request->getSession();
+        $session = $requestStack->getSession();
         $session->start();
         var_dump($session->getId());
         return new JsonResponse(AppGetProductsResource::get($this->cartRepository->findBy(['sessionId' => $session->getId()])));

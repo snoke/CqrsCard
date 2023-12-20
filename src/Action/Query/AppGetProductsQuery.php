@@ -7,6 +7,7 @@ use App\Resources\AppGetProductsResource;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class AppGetProductsQuery
 {
@@ -16,7 +17,7 @@ class AppGetProductsQuery
         $this->productRepository = $productRepository;
     }
 
-    public function fetch(Request $request,array $parameters = []): Response
+    public function fetch(RequestStack $requestStack,array $parameters = []): Response
     {
         return new Response(json_encode(AppGetProductsResource::get($this->productRepository->findAll())));
     }

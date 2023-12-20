@@ -50,17 +50,17 @@ class AppController extends AbstractController
     /**
      * @Route("/appGetProducts", name="AppGetProducts")
      */
-    public function appGetProducts(Request $request, AppGetProductsQuery $query): Response
+    public function appGetProducts(RequestStack $requestStack, AppGetProductsQuery $query): Response
     {
-         return $query->fetch($request);
+         return $query->fetch($requestStack);
     }
 
     /**
      * @Route("/appGetCard", name="appGetCard")
      */
-    public function appGetCard(Request $request, RequestStack $requestStack, AppGetCardQuery $query): JsonResponse
+    public function appGetCard(RequestStack $requestStack, AppGetCardQuery $query): JsonResponse
     {
-        return $query->fetch($request);
+        return $query->fetch($requestStack);
     }
     /**
      * @Route("/", name="index")
