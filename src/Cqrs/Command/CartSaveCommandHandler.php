@@ -2,6 +2,7 @@
 namespace App\Cqrs\Command;
 
 use App\Cqrs\AbstractCommand;
+use App\Cqrs\CommandHandlerInterface;
 use App\Entity\Cart;
 use App\Entity\CartProduct;
 use App\Repository\CartRepository;
