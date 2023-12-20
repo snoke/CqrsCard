@@ -4,8 +4,8 @@
     <div id="cart">cart
       <ul>
         <li v-for="(product,index) in this.cart" :key="product.id" class="product">
-          <div class="name">{{ product.name }}</div>
-          <div class="price">price: {{ product.price | currency }}</div>
+          <div class="name">Name: {{ product.name }}</div>
+          <div class="price">Price: {{ product.price | currency }}</div>
           <div class="buttons">
             <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(index,product)">+
             </button>
@@ -16,7 +16,7 @@
           </div>
         </li>
       </ul>
-      <div class="sum">{{
+      <div class="sum" style="text-align: center">Total: {{
           cart.reduce((accumulator, object) => {
             return accumulator + object['price'];
           }, 0) | currency
