@@ -69,10 +69,6 @@ export default {
           console.log(response.data);
           alert("ASD")
         });
-    axios.get("/appGetProducts?sessionId="+this.$root.config.sessionId)
-        .then((response) => {
-          this.products = response.data;
-        });
   },
   methods: {
     cartCheckout: function () {
