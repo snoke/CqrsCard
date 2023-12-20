@@ -3,63 +3,13 @@
   <div id="app">
 
     <div class="test">
+      <ul><
       <li v-for="(product,index) in transformCart" :key="product.id" class="product">
         <div class="name">{{ product.name }}</div>
         <div class="price">price: {{ product.price | currency }}</div>
       </li>
+      </ul>
     </div>
-
-    <div class="row">
-
-      <div class="col-auto">
-
-        <div id="cart">cart
-          <ul>
-            <li v-for="(product,index) in this.cart" :key="product.id" class="product">
-              <div class="name">Name: {{ product.name }}</div>
-              <div class="price">Price: {{ product.price | currency }}</div>
-              <div class="buttons">
-                <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(index,product)">+
-                </button>
-                <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(index,product)">-
-                </button>
-                <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(index,product)">remove
-                </button>
-              </div>
-            </li>
-          </ul>
-          <div class="sum" style="text-align: center">Total: {{
-              cart.reduce((accumulator, object) => {
-                return accumulator + object['price'];
-              }, 0) | currency
-            }}
-          </div>
-          <div class="w-100 text-center">
-            <button type="button" class="btn btn-outline-primary" @click="cartCheckout()">checkout
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="col-auto">
-
-        <div id="products">products
-          <ul>
-            <li v-for="(product,index) in products" :key="product.id" class="product">
-              <div class="name">{{ product.name }}</div>
-              <div class="price">price: {{ product.price | currency }}</div>
-              <div class="add-to-cart">
-                amount: <input type="text" :ref="'amount_'+index" value="1"/>
-                <button type="button" class="btn btn-outline-primary" @click="productAddToCart(index,product)">add to
-                  cart
-                </button>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-
   </div>
 
 </template>
