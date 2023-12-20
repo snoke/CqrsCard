@@ -30,7 +30,6 @@ class CartSaveCommandHandlerHandler extends AbstractCommandHandler implements Co
     public function saveCommand(Command $command): void
     {
 
-        $this->entityManager->persist($command);
     }
     public function execute(RequestStack $requestStack,CartSaveCommand $command): int
     {
@@ -54,8 +53,7 @@ class CartSaveCommandHandlerHandler extends AbstractCommandHandler implements Co
             $cartProduct->setProduct($entity);
             $this->entityManager->persist($cartProduct);
         }
-        $this->saveCommand($command);
-
+        $this->entityManager->persist(new Command($command->getSessionId(),json_encode($command->getProducts())));
         $this->entityManager->flush();
         return true;
     }
