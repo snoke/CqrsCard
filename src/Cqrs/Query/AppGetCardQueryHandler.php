@@ -24,6 +24,7 @@ class AppGetCardQueryHandler extends AbstractQueryHandler
     {
         $sessionId = $command->getSessionId();
         //$sessionId = $requestStack->getSession()->get('sessionId');
+        var_dump("ASDASD");
         $cart = $this->cartRepository->findOneBy(['sessionId' => $sessionId]);
 
         $cartProducts = $cart ? $this->cartProductRepository->findBy(['cart' => $cart]) : [];

@@ -50,7 +50,11 @@ class CqrsController extends AbstractController
      */
     public function appGetCard(RequestStack $requestStack, AppGetCardQueryHandler $handler): JsonResponse
     {
-        $query = new AppGetCardQuery($requestStack->getSession()->get('sessionId'));
+        var_dump("A");
+        $sessionId = $requestStack->getSession()->get('sessionId');
+        var_dump($sessionId);
+        $c = new AppGetCardQuery($sessionId);
+        var_dump("B");
         return $handler->fetch($query);
     }
 }
