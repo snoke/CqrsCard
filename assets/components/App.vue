@@ -26,8 +26,9 @@
               }, 0) | currency
             }}
           </div>
-          <button type="button" class="w-100 btn btn-outline-primary" @click="cartCheckout()">checkout
-          </button>
+          <div class="w-100 text-center">
+            <button type="button" class="btn btn-outline-primary" @click="cartCheckout()">checkout
+          </button></div>
         </div>
       </div>
       <div class="col-auto">
