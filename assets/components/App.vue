@@ -10,6 +10,7 @@
         id:{{productId}}
         <div class="name">Name: {{ products[0].name }}</div>
         <div class="price">Price: {{ products[0].price | currency }}</div>
+        <div class="priceSubTotal">Price subtotal: {{ products[0].price * products.length | currency }}</div>
         <div class="buttons">
           <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(index,products[0])">+
           </button>
