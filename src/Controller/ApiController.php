@@ -10,6 +10,7 @@ use App\Cqrs\Command\CartSaveCommandHandler;
 use App\Cqrs\Query\AppGetCardQuery;
 use App\Cqrs\Query\AppGetProductsQuery;
 use App\Repository\CartRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,11 +26,12 @@ class ApiController extends AbstractController
     /**
      * @Route("/cartSave", name="cartSave")
      */
-    public function cartSave(RequestStack $requestStack, CartSaveCommandHandler $handler, CartRepository $cartRepository): JsonResponse
+    public function cartSave(RequestStack $requestStack, CartSaveCommandHandler $handler, EntityManagerInterface $entityManager): JsonResponse
     {
         $sessionId = $requestStack->getSession()->get('sessionId');
         $command = new CartSaveCommand($sessionId,json_decode($requestStack->getCurrentRequest()->getContent(),true)['cart']);
-
+        $entityManager->persist($command);
+        $entityManager->flush();
         return new JsonResponse($handler->execute($requestStack,$command));
     }
 

@@ -26,6 +26,7 @@ class Command
 
     public function __construct(string $sessionId,string $parameters = '') {
         $this->sessionId = $sessionId;
+        $this->executedAt = new DateTime();
         $this->parameters = $parameters;
     }
     public function getId() {
