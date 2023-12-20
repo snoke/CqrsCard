@@ -1,6 +1,7 @@
 <!-- Author: Stefan Sander <mail@stefan-sander.online> -->
 <template>
   <div id="app">
+    <div id="cart">cart
       <ul>
         <li v-for="(product,index) in cart" :key="product.id" class="product">
           <div class="name">{{ product.name }}</div>
