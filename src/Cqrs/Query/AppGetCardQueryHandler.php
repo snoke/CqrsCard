@@ -15,7 +15,6 @@ class AppGetCardQueryHandler extends AbstractQueryHandler
 
     public function __construct(CartProductRepository $cartProductRepository, CartRepository $cartRepository)
     {
-        parent::__construct();
         $this->cartRepository = $cartRepository;
         $this->cartProductRepository = $cartProductRepository;
     }
@@ -23,8 +22,6 @@ class AppGetCardQueryHandler extends AbstractQueryHandler
     public function fetch(AppGetCardQuery $command): JsonResponse
     {
         $sessionId = $command->getSessionId();
-        //$sessionId = $requestStack->getSession()->get('sessionId');
-        var_dump("ASDASD");
         $cart = $this->cartRepository->findOneBy(['sessionId' => $sessionId]);
 
         $cartProducts = $cart ? $this->cartProductRepository->findBy(['cart' => $cart]) : [];
