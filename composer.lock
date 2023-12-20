@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd3f383ee0589661878a1bdf0da637a4",
+    "content-hash": "a609920d75363fed79bf36484be79da2",
     "packages": [
         {
             "name": "api-platform/core",
@@ -229,6 +229,57 @@
                 "source": "https://github.com/ratchetphp/Ratchet/tree/v0.4.4"
             },
             "time": "2021-12-14T00:20:41+00:00"
+        },
+        {
+            "name": "digital-craftsman/cqrs",
+            "version": "v0.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digital-craftsman-de/cqrs.git",
+                "reference": "f284c96c6cc59f886822c55506403421d1d96f22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digital-craftsman-de/cqrs/zipball/f284c96c6cc59f886822c55506403421d1d96f22",
+                "reference": "f284c96c6cc59f886822c55506403421d1d96f22",
+                "shasum": ""
+            },
+            "require": {
+                "php": "8.1.*|8.2.*",
+                "symfony/framework-bundle": "^5.4|^6.0",
+                "symfony/serializer": "^5.4|^6.0"
+            },
+            "require-dev": {
+                "digital-craftsman/ids": "0.7.*",
+                "friendsofphp/php-cs-fixer": "^3.15",
+                "phpunit/phpunit": "^9.5",
+                "symfony/property-access": "^6.2",
+                "symfony/property-info": "^6.2",
+                "symfony/yaml": "^6.2",
+                "vimeo/psalm": "^4.12"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "DigitalCraftsman\\CQRS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Kolb",
+                    "email": "info@digital-craftsman.de"
+                }
+            ],
+            "description": "Reduced cost of change through CQRS in Symfony",
+            "support": {
+                "issues": "https://github.com/digital-craftsman-de/cqrs/issues",
+                "source": "https://github.com/digital-craftsman-de/cqrs/tree/v0.10.0"
+            },
+            "time": "2023-03-27T21:20:02+00:00"
         },
         {
             "name": "doctrine/annotations",

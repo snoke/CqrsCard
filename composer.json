@@ -9,6 +9,7 @@
         "ext-iconv": "*",
         "api-platform/core": "^2.6",
         "cboden/ratchet": "^0.4.4",
+        "digital-craftsman/cqrs": "^0.10.0",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/doctrine-migrations-bundle": "^3.2",
