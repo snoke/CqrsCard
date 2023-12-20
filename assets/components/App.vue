@@ -4,6 +4,8 @@
     <div id="cart">cart
       <ul>
         <li v-for="(amount,productId) in formatCart" :key="productId" class="product" :set="product = getProductById(productId)">
+          {{productId}}
+          {{getProductById(productId)}}
           <div class="name">{{ product.name }}</div>
           <div class="price">price: {{ product.price | currency }}</div>
           <div class="buttons">
