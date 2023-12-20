@@ -6,7 +6,7 @@
 namespace App\Controller;
 
 use App\Cqrs\Command\CartSaveCommand;
-use App\Cqrs\Command\CartSaveCommandHandlerHandler;
+use App\Cqrs\Command\CartSaveCommandHandler;
 use App\Cqrs\Query\AppGetCardQuery;
 use App\Cqrs\Query\AppGetProductsQuery;
 use App\Repository\CartRepository;
@@ -26,7 +26,7 @@ class CqrsController extends AbstractController
     /**
      * @Route("/cartSave", name="cartSave")
      */
-    public function cartSave(RequestStack $requestStack, CartSaveCommandHandlerHandler $handler): JsonResponse
+    public function cartSave(RequestStack $requestStack, CartSaveCommandHandler $handler): JsonResponse
     {
         $sessionId = $requestStack->getSession()->get('sessionId');
         $command = new CartSaveCommand($sessionId,json_decode($requestStack->getCurrentRequest()->getContent(),true)['cart']);

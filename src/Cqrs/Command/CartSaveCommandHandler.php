@@ -12,7 +12,7 @@ use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class CartSaveCommandHandlerHandler extends AbstractCommandHandler implements CommandHandlerInterface
+class CartSaveCommandHandler extends AbstractCommandHandler implements CommandHandlerInterface
 {
     private CartRepository $cartRepository;
     private CartProductRepository $cartProductRepository;
@@ -27,10 +27,6 @@ class CartSaveCommandHandlerHandler extends AbstractCommandHandler implements Co
         $this->productRepository = $productRepository;
     }
 
-    public function saveCommand(Command $command): void
-    {
-
-    }
     public function execute(RequestStack $requestStack,CartSaveCommand $command): int
     {
         foreach($this->cartRepository->findBy(['sessionId' => $command->getSessionId()]) as $cart) {
@@ -53,8 +49,9 @@ class CartSaveCommandHandlerHandler extends AbstractCommandHandler implements Co
             $cartProduct->setProduct($entity);
             $this->entityManager->persist($cartProduct);
         }
-        //$this->entityManager->persist($command);
+
         $this->entityManager->persist(new Command($command::class,$command->getSessionId(),json_encode($command->getProducts())));
+
         $this->entityManager->flush();
         return true;
     }

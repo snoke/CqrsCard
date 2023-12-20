@@ -1,15 +1,15 @@
 <?php
 namespace App\Cqrs\Command;
 
-use App\Entity\Command;
+use App\Cqrs\AbstractCommand;
 use App\Cqrs\CommandInterface;
 
-class CartSaveCommand extends Command implements CommandInterface
+class CartSaveCommand extends AbstractCommand implements CommandInterface
 {
     private array $products;
 
     public function __construct(string $sessionId, $products) {
-        parent::__construct(self::class,$sessionId,json_encode($products));
+        parent::__construct($sessionId);
         $this->products = $products;
     }
     public function getProducts(): array
