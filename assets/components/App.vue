@@ -78,11 +78,11 @@ export default {
   mounted: function () {
     axios.get("/query/appGetCard?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
-          this.cart = response.data;
+          this.cart = JSON.parse(response.data);
         });
     axios.get("/query/appGetProducts?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
-          this.products = response.data;
+          this.products = JSON.parse(response.data);
         });
   },
   methods: {

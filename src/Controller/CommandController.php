@@ -7,10 +7,6 @@ namespace App\Controller;
 
 use App\Cqrs\Command\CartSaveCommand;
 use App\Cqrs\Command\CartSaveCommandHandler;
-use App\Cqrs\Query\AppGetCardQuery;
-use App\Cqrs\Query\AppGetCardQueryHandler;
-use App\Cqrs\Query\AppGetProductsQuery;
-use App\Cqrs\Query\AppGetProductsQueryHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
