@@ -27,8 +27,6 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
 
     public function execute(RequestStack $requestStack): int
     {
-        echo '<pre>';
-        var_dump(json_decode($requestStack->getCurrentRequest()->getContent(),true) );
 
         $sessionId = $requestStack->getSession()->get('sessionId');
         foreach($this->cartRepository->findBy(['sessionId' => $sessionId]) as $cart) {
@@ -48,9 +46,9 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
         $this->entityManager->flush();
 
         echo '<pre>';
-        var_dump(json_decode($requestStack->getCurrentRequest()->getContent(),true));
+        var_dump(json_decode($requestStack->getCurrentRequest()->getContent(),true)['cart']);
         die;
-        foreach(json_decode($requestStack->getCurrentRequest()->getContent(),true) as $product) {
+        foreach(json_decode($requestStack->getCurrentRequest()->getContent(),true)['cart'] as $product) {
             var_dump($product);
             $entity = $this->productRepository->find($product[0]['id']);
             var_dump($entity);
