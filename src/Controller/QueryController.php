@@ -36,7 +36,7 @@ class QueryController extends AbstractController
     /**
      * @Route("/appGetCard", name="appGetCard")
      */
-    public function appGetCard(RequestStack $requestStack, AppGetCardQueryHandler $handler,AppGetCartResource $resource): JsonResponse
+    public function appGetCard(RequestStack $requestStack, AppGetCardQueryHandler $handler,AppGetCartResource $resource): Response
     {
         return $handler->fetch(new AppGetCardQuery($requestStack->getSession()),$resource);
     }
