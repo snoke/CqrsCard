@@ -3,7 +3,9 @@
   <div id="app">
     <div id="cart">cart
       <ul>
-        <li v-for="(amount,productId) in formatCart" :key="productId" class="product" :set="product = getProductById(productId)">
+        <li v-for="(amount,productId) in formatCart" :key="productId" class="product">
+          {{formatCart}}
+          {{amount}}
           {{productId}}
           {{getProductById(productId)}}
           <div class="name">{{ product.name }}</div>
