@@ -16,11 +16,7 @@ class AppGetCartResource extends AbstractResource
     {
         return $this->serialize($cart ? array_map(function (CartProduct $cartProduct) {
             $product = $cartProduct->getProduct();
-            return [
-                'id' => $product->getId(),
-                'name' => $product->getName(),
-                'price' => $product->getPrice(),
-            ];
+            return $this->serialize($product,'json');
         }, $cartProducts) : []);
     }
 }
