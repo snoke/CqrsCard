@@ -1,5 +1,5 @@
 <?php
-namespace App\Cqrs\Command;
+namespace App\Cqrs;
 
 interface CommandHandlerInterface {
     //public function execute(CommandInterface $command): int;

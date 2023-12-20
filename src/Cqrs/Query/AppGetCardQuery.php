@@ -2,7 +2,7 @@
 namespace App\Cqrs\Query;
 
 use App\Entity\Query;
-use App\Cqrs\Query\QueryInterface;
+use App\Cqrs\QueryInterface;
 use App\Repository\CartRepository;
 use App\Repository\CartProductRepository;
 use App\Resources\AppGetCartResource;

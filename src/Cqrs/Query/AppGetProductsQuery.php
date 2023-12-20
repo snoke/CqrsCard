@@ -2,12 +2,13 @@
 namespace App\Cqrs\Query;
 
 use App\Entity\Query;
+use App\Cqrs\QueryInterface;
 use App\Repository\ProductRepository;
 use App\Resources\AppGetProductsResource;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class AppGetProductsQuery extends Query
+class AppGetProductsQuery extends Query implements QueryInterface
 {
     private ProductRepository $productRepository;
 

@@ -1,5 +1,5 @@
 <?php
-namespace App\Cqrs\Query;
+namespace App\Cqrs;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;

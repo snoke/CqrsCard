@@ -1,5 +1,5 @@
 <?php
-namespace App\Cqrs\Command;
+namespace App\Cqrs;
 
 use Doctrine\ORM\EntityManagerInterface;
 
