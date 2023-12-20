@@ -14,7 +14,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 
@@ -33,7 +32,7 @@ class AppController extends AbstractController
     /**
      * @Route("/migrate", name="migrate")
      */
-    public function migrate(Request $request,EntityManagerInterface $em): JsonResponse
+    public function migrate(EntityManagerInterface $em): JsonResponse
     {
         $product = new Product();
         $product->setName('test');
@@ -65,7 +64,7 @@ class AppController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index(Request $request, RequestStack $requestStack): Response
+    public function index(RequestStack $requestStack): Response
     {
         $session = $requestStack->getSession();
         if (!$session->isStarted()) {
