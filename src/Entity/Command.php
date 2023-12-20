@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Annotations\Annotation;
 use Doctrine\ORM\Mapping\MappedSuperclass;
 
-/** @MappedSuperclass */
 #[ORM\Entity(repositoryClass: CommandRepository::class)]
 class Command
 {

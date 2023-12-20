@@ -5,6 +5,7 @@ use App\Cqrs\AbstractCommandHandler;
 use App\Cqrs\CommandHandlerInterface;
 use App\Entity\Cart;
 use App\Entity\CartProduct;
+use App\Entity\Command;
 use App\Repository\CartRepository;
 use App\Repository\CartProductRepository;
 use App\Repository\ProductRepository;
@@ -26,6 +27,11 @@ class CartSaveCommandHandlerHandler extends AbstractCommandHandler implements Co
         $this->productRepository = $productRepository;
     }
 
+    public function saveCommand(Command $command): void
+    {
+
+        $this->entityManager->persist($command);
+    }
     public function execute(RequestStack $requestStack,CartSaveCommand $command): int
     {
         foreach($this->cartRepository->findBy(['sessionId' => $command->getSessionId()]) as $cart) {
@@ -48,7 +54,7 @@ class CartSaveCommandHandlerHandler extends AbstractCommandHandler implements Co
             $cartProduct->setProduct($entity);
             $this->entityManager->persist($cartProduct);
         }
-        $this->entityManager->persist($command);
+        $this->saveCommand($command);
 
         $this->entityManager->flush();
         return true;
