@@ -7,19 +7,19 @@
 
         <div id="cart">cart
           <ul>
-            <li v-for="(products,productId) in this.cartTransformed" :key="productId" class="product" v-if="products">
-              <div class="name">Name: {{ products[0].name }}</div>
-              <div class="price">Price: {{ products[0].price | currency }}</div>
-              <div class="amount">Amount: {{ products.length }}</div>
-              <div class="priceSubTotal">Price subtotal: {{ products[0].price * products.length | currency }}</div>
+            <li v-for="(entry,productId) in this.cartTransformed" :key="productId" class="product" v-if="products">
+              <div class="name">Name: {{ entry.entity.name }}</div>
+              <div class="price">Price: {{ entry.entity.price | currency }}</div>
+              <div class="amount">Amount: {{ entry.amount }}</div>
+              <div class="priceSubTotal">Price subtotal: {{ entry.entity.price * entry.amount | currency }}</div>
               <div class="buttons">
-                <button type="button" class="btn btn-outline-secondary button-increase" @click="cartIncreaseProduct(index,products[0])">
+                <button type="button" class="btn btn-outline-secondary button-increase" @click="cartIncreaseProduct(index,entry.entity)">
                   +
                 </button>
-                <button type="button" class="btn btn-outline-secondary button-decrease" @click="cartDecreaseProduct(index,products[0])">
+                <button type="button" class="btn btn-outline-secondary button-decrease" @click="cartDecreaseProduct(index,entry.entity)">
                   -
                 </button>
-                <button type="button" class="btn btn-outline-secondary button-remove" @click="cartRemoveProduct(index,products[0])">
+                <button type="button" class="btn btn-outline-secondary button-remove" @click="cartRemoveProduct(index,entry.entity)">
                   remove
                 </button>
               </div>
@@ -101,8 +101,10 @@ export default {
     transformCart(cart) {
       let array = []
       for (let product of cart) {
-        array[product.id] = array[product.id] ? array[product.id] : [];
-        array[product.id].push(product);
+        array[product.id] = array[product.id] ? array[product.id] : {};
+        array[product.id].entity = product;
+        array[product.id].amount = array[product.id].amount ? array[product.id].amount : 0;
+        array[product.id].amount++;
       }
       return array;
     },
