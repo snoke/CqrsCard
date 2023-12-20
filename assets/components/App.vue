@@ -91,8 +91,8 @@ export default {
     transformCart() {
       let array = []
       for (let product of this.cart) {
-        array[product.id] = array[product.id] ? array[product.id] : 0;
-        array[product.id]++;
+        array[product.id] = array[product.id] ? array[product.id] : [];
+        array[product.id].push(product);
       }
       return array;
     },
