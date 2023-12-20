@@ -9,6 +9,7 @@ use App\Cqrs\Command\CartSaveCommand;
 use App\Cqrs\Command\CartSaveCommandHandler;
 use App\Cqrs\Query\AppGetCardQuery;
 use App\Cqrs\Query\AppGetCardQueryHandler;
+use App\Cqrs\Query\AppGetCartResource;
 use App\Cqrs\Query\AppGetProductsQuery;
 use App\Cqrs\Query\AppGetProductsQueryHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,8 +35,8 @@ class QueryController extends AbstractController
     /**
      * @Route("/appGetCard", name="appGetCard")
      */
-    public function appGetCard(RequestStack $requestStack, AppGetCardQueryHandler $handler): JsonResponse
+    public function appGetCard(RequestStack $requestStack, AppGetCardQueryHandler $handler,AppGetCartResource $resource): JsonResponse
     {
-        return $handler->fetch(new AppGetCardQuery($requestStack->getSession()->get('sessionId')));
+        return $handler->fetch(new AppGetCardQuery($requestStack->getSession()->get('sessionId')), $resource);
     }
 }
