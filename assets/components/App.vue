@@ -67,6 +67,10 @@ export default {
         .then((response) => {
           this.card = [].concat(response.data);
           console.log(response.data);
+          this.card = [
+            {id:12,name:'tes',price:5.22}
+          ];
+          this.$forceUpdate();
         });
     axios.get("/appGetProducts?sessionId="+this.$root.config.sessionId)
         .then((response) => {
