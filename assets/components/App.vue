@@ -5,7 +5,8 @@
     <div class="test">
       {{cartTransformed}}
       <li v-for="(products,productId) in this.cartTransformed" :key="productId" class="product">
-        {{products}}{{productId}}
+        products:{{products}}
+        id:{{productId}}
       </li>
     </div>
 
