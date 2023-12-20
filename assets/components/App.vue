@@ -78,6 +78,7 @@ export default {
   mounted: function () {
     axios.get("/query/appGetCard?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
+          console.log("appGetCard")
           console.log(response.data)
           console.log(JSON.parse(response.data))
           alert("")
@@ -85,6 +86,7 @@ export default {
         });
     axios.get("/query/appGetProducts?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
+          console.log("appGetProducts")
           console.log(response.data)
           console.log(JSON.parse(response.data))
           alert("")
