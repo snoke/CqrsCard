@@ -5,6 +5,7 @@
 
 namespace App\Cqrs\Query;
 
+use Symfony\Component\HttpFoundation\Response;
 use App\Cqrs\AbstractQueryHandler;
 use App\Repository\CartProductRepository;
 use App\Repository\CartRepository;
@@ -21,12 +22,12 @@ class AppGetCardQueryHandler extends AbstractQueryHandler
         $this->cartProductRepository = $cartProductRepository;
     }
 
-    public function fetch(AppGetCardQuery $command,AppGetCartResource $resource): JsonResponse
+    public function fetch(AppGetCardQuery $command,AppGetCartResource $resource): Response
     {
         $sessionId = $command->getSessionId();
         $cart = $this->cartRepository->findOneBy(['sessionId' => $sessionId]);
 
         $cartProducts = $cart ? $this->cartProductRepository->findBy(['cart' => $cart]) : [];
-        return new JsonResponse(json_encode($resource->get($cart, $cartProducts)));
+        return new Response(json_encode($resource->get($cart, $cartProducts)));
     }
 }
