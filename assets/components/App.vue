@@ -78,7 +78,7 @@ export default {
   mounted: function () {
     axios.get("/query/appGetCard?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
-          this.cart = response.data;
+          JSON.parse(this.cart = response.data);
         });
     axios.get("/query/appGetProducts?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
