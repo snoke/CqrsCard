@@ -8,8 +8,22 @@
         <div id="cart">cart
           <ul>
             <li v-for="(entry,productId) in this.cartTransformed" :key="productId" class="product" v-if="products">
-              {{entry}}
-              {{productId}}
+              <div class="name">Name: {{ entry['entity'].name }}</div>
+              <div class="price">Price: {{ entry['entity'].price | currency }}</div>
+              <div class="amount">Amount: {{ entry['amount'] }}</div>
+              <div class="priceSubTotal">Price subtotal: {{ entry['entity'].price * entry['amount'] | currency }}</div>
+              <div class="buttons">
+                <button type="button" class="btn btn-outline-secondary button-increase" @click="cartIncreaseProduct(index,entry['entity'])">
+                  +
+                </button>
+                <button type="button" class="btn btn-outline-secondary button-decrease" @click="cartDecreaseProduct(index,entry['entity'])">
+                  -
+                </button>
+                <button type="button" class="btn btn-outline-secondary button-remove" @click="cartRemoveProduct(index,entry['entity'])">
+                  remove
+                </button>
+              </div>
+
             </li>
           </ul>
           <div class="sum" style="text-align: center">Total: {{
@@ -92,6 +106,8 @@ export default {
         array[product.id]['amount'] = array[product.id]['amount'] ? array[product.id]['amount'] : 0;
         array[product.id]['amount']++;
       }
+      console.log(array)
+      alert("ASD")
       return array;
     },
     cartCheckout: function () {
