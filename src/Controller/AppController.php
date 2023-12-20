@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 
 class AppController extends AbstractController
@@ -57,21 +58,17 @@ class AppController extends AbstractController
     /**
      * @Route("/appGetCard", name="appGetCard")
      */
-    public function appGetCard(Request $request, AppGetCardQuery $query): JsonResponse
+    public function appGetCard(Request $request, RequestStack $requestStack, AppGetCardQuery $query): JsonResponse
     {
 
-        $session = $request->getSession();
-        $session->start();
-        var_dump($session->getId());die;
         return $query->fetch($request);
     }
     /**
      * @Route("/", name="index")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, RequestStack $requestStack): Response
     {
-        $session = $request->getSession();
-        $session->start();
+        $session = $requestStack->getSession();
         var_dump($session->getId());
         return $this->render('app/index.html.twig', [
             'config' => [
