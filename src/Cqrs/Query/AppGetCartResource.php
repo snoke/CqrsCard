@@ -12,7 +12,7 @@ use App\Entity\CartProduct as CartProduct;
 
 class AppGetCartResource extends AbstractResource
 {
-    public static function get(?Cart $cart,?array $cartProducts)
+    public  function get(?Cart $cart,?array $cartProducts)
     {
         return $cart ? array_map(function (CartProduct $cartProduct) {
             $product = $cartProduct->getProduct();

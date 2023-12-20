@@ -9,7 +9,7 @@ use App\Entity\Product as ProductEntity;
 
 class AppGetProductsResource extends AbstractResource
 {
-    public static function get(array $products) {
+    public  function get(array $products) {
         return array_map(function(ProductEntity $product) {
             return $this->serialize($product);
         }, $products);
