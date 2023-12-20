@@ -32,7 +32,6 @@
           </div>
         </div>
       </div>
-      <div class="col-auto separator"></div>
       <div class="col-auto">
 
         <div id="products">products
