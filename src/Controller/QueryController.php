@@ -19,23 +19,10 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 
 /**
- * @Route("/api", name="cartSave")
+ * @Route("/query", name="cartSave")
  */
-class CqrsController extends AbstractController
+class QueryController extends AbstractController
 {
-    /**
-     * @Route("/cartSave", name="cartSave")
-     */
-    public function cartSave(RequestStack $requestStack, CartSaveCommandHandler $handler): JsonResponse
-    {
-        return new JsonResponse($handler->execute($requestStack,
-            new CartSaveCommand(
-                $requestStack->getSession()->get('sessionId'),
-                json_decode($requestStack->getCurrentRequest()->getContent(), true)['cart']
-            )
-        ));
-    }
-
     /**
      * @Route("/appGetProducts", name="AppGetProducts")
      */

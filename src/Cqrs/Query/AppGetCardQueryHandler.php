@@ -1,11 +1,13 @@
 <?php
+/*
+ * Author: Stefan Sander <mail@stefan-sander.online>
+ */
 
 namespace App\Cqrs\Query;
 
 use App\Cqrs\AbstractQueryHandler;
-use App\Repository\CartRepository;
 use App\Repository\CartProductRepository;
-use App\Resources\AppGetCartResource;
+use App\Repository\CartRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AppGetCardQueryHandler extends AbstractQueryHandler

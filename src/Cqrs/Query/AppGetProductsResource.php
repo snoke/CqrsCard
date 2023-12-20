@@ -1,5 +1,8 @@
 <?php
-namespace App\Resources;
+/*
+ * Author: Stefan Sander <mail@stefan-sander.online>
+ */
+namespace App\Cqrs\Query;
 
 use App\Entity\Product as ProductEntity;
 

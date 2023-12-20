@@ -17,11 +17,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-
 /**
- * @Route("/api", name="cartSave")
+ * @Route("/command", name="cartSave")
  */
-class CqrsController extends AbstractController
+class CommandController extends AbstractController
 {
     /**
      * @Route("/cartSave", name="cartSave")
@@ -34,21 +33,5 @@ class CqrsController extends AbstractController
                 json_decode($requestStack->getCurrentRequest()->getContent(), true)['cart']
             )
         ));
-    }
-
-    /**
-     * @Route("/appGetProducts", name="AppGetProducts")
-     */
-    public function appGetProducts(RequestStack $requestStack, AppGetProductsQueryHandler $handler): Response
-    {
-        return $handler->fetch(new AppGetProductsQuery($requestStack->getSession()->get('sessionId')));
-    }
-
-    /**
-     * @Route("/appGetCard", name="appGetCard")
-     */
-    public function appGetCard(RequestStack $requestStack, AppGetCardQueryHandler $handler): JsonResponse
-    {
-        return $handler->fetch(new AppGetCardQuery($requestStack->getSession()->get('sessionId')));
     }
 }

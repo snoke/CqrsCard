@@ -1,6 +1,9 @@
 <?php
+/*
+ * Author: Stefan Sander <mail@stefan-sander.online>
+ */
 
-namespace App\Resources;
+namespace App\Cqrs\Query;
 
 use App\Entity\Cart;
 use App\Entity\CartProduct as CartProduct;
