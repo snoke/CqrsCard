@@ -87,7 +87,7 @@ export default {
   },
   methods: {
     cartCheckout: function () {
-      axios.post("/command/cartSave?sessionId=" + this.$root.config.sessionId, {cart: this.cart})
+      axios.post("/api/cartSave?sessionId=" + this.$root.config.sessionId, {cart: this.cart})
           .then((response) => {
           });
     },
