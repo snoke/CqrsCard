@@ -24,9 +24,9 @@ class AppController extends AbstractController
     /**
      * @Route("/cartSave", name="cartSave")
      */
-    public function cartSave(Request $request, CartSaveCommand $command): JsonResponse
+    public function cartSave(RequestStack $requestStack, CartSaveCommand $command): JsonResponse
     {
-        $command->execute($request);
+        $command->execute($requestStack);
         return new JsonResponse(true);
     }
 
