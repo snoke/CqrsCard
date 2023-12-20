@@ -28,15 +28,13 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
         var_dump(json_decode($requestStack->getCurrentRequest()->getContent(),true) );
 
         $sessionId = $requestStack->getSession()->get('sessionId');
-        foreach($this->cartRepository->findBy(['sessionId' => $sessionId]) as $cart) {
-            $this->entityManager->remove($cart);
-            $this->entityManager->flush();
+        foreach($this->cartRepository->findBy(['sessionId' => $sessionId]) as $_cart) {
+            $this->entityManager->remove($_cart);
         };
 
         $cart = new Cart();
         $cart->setSessionId($sessionId);
         $this->entityManager->persist($cart);
-        $this->entityManager->flush();
 
             foreach(json_decode($requestStack->getCurrentRequest()->getContent(),true) as $product) {
                 $entity = $this->productRepository->find($product[0]['id']);
