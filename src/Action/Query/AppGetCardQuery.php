@@ -19,8 +19,7 @@ class AppGetCardQuery implements QueryInterface
 
     public function fetch(RequestStack $requestStack): JsonResponse
     {
-
-        $sessionId = null;//$requestStack->getCurrentRequest()->getSession()->get('sessionId');
+        $sessionId = $requestStack->getSession()->get('sessionId');
         return new JsonResponse(AppGetProductsResource::get($this->cartRepository->findBy(['sessionId' => $sessionId])));
     }
 }
