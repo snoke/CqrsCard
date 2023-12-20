@@ -1,7 +1,7 @@
 <?php
 namespace App\Cqrs\Command;
 
-use App\Cqrs\AbstractCommand;
+use App\Cqrs\AbstractCommandHandler;
 use App\Cqrs\CommandHandlerInterface;
 use App\Entity\Cart;
 use App\Entity\CartProduct;
@@ -11,7 +11,7 @@ use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class CartSaveCommandHandler extends AbstractCommand implements CommandHandlerInterface
+class CartSaveCommandHandlerHandler extends AbstractCommandHandler implements CommandHandlerInterface
 {
     private CartRepository $cartRepository;
     private CartProductRepository $cartProductRepository;
@@ -48,6 +48,7 @@ class CartSaveCommandHandler extends AbstractCommand implements CommandHandlerIn
             $cartProduct->setProduct($entity);
             $this->entityManager->persist($cartProduct);
         }
+        $this->entityManager->persist($command);
 
         $this->entityManager->flush();
         return true;

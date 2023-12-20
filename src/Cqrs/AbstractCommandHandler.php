@@ -3,7 +3,7 @@ namespace App\Cqrs;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-class AbstractCommand
+class AbstractCommandHandler
 {
     protected EntityManagerInterface $entityManager;
 
