@@ -109,6 +109,10 @@ export default {
     cartCheckout: function () {
       axios.post("/command/cartSave?sessionId=" + this.$root.config.sessionId, {cart: this.cart})
           .then((response) => {
+            console.log(response)
+            alert(response)
+            console.log(response.data)
+            alert("card saved")
           });
     },
     cartRemoveProduct: function (index, product) {
