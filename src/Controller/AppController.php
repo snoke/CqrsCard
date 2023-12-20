@@ -67,7 +67,7 @@ class AppController extends AbstractController
      */
     public function index(Request $request, RequestStack $requestStack): Response
     {
-        $session = $request->getSession();
+        $session = $requestStack->getSession();
         if (!$session->isStarted()) {
             $session->start();
         }
