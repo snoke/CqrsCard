@@ -13,7 +13,7 @@ class CartProduct
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\ManyToOne(targetEntity: Cart::class)]
     private ?Cart $cart = null;
 
     #[ORM\ManyToOne(targetEntity: Product::class)]
