@@ -21,12 +21,12 @@ class AppGetCardQueryHandler extends AbstractQueryHandler
         $this->cartProductRepository = $cartProductRepository;
     }
 
-    public function fetch(AppGetCardQuery $command): JsonResponse
+    public function fetch(AppGetCardQuery $command,AppGetCartResource $resource): JsonResponse
     {
         $sessionId = $command->getSessionId();
         $cart = $this->cartRepository->findOneBy(['sessionId' => $sessionId]);
 
         $cartProducts = $cart ? $this->cartProductRepository->findBy(['cart' => $cart]) : [];
-        return new JsonResponse(AppGetCartResource::get($cart, $cartProducts));
+        return new JsonResponse($resource->get($cart, $cartProducts));
     }
 }
