@@ -52,7 +52,6 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
             $cartProduct->setProduct($entity);
             $this->entityManager->persist($cartProduct);
         }
-        die;
         $this->entityManager->persist($cart);
 
         $this->entityManager->flush();
