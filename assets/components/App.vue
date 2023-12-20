@@ -36,9 +36,7 @@ export default {
   mounted: function () {
     axios.get("/query/appGetCard?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
-          this.cart = response.data;
-          console.log(this.transformCart())
-          alert("--")
+          this.cart = this.transformCart(response.data);
         });
     axios.get("/query/appGetProducts?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
@@ -46,13 +44,13 @@ export default {
         });
   },
   methods: {
-    transformCart() {
+    transformCart(cart) {
       let array = []
-      for (let product of this.cart) {
+      for (let product of cart) {
         array[product.id] = array[product.id] ? array[product.id] : [];
         array[product.id].push(product);
       }
-      return array;
+      this.cart = array;
     },
     cartCheckout: function () {
       axios.post("/api/cartSave?sessionId=" + this.$root.config.sessionId, {cart: this.cart})
