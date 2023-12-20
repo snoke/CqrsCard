@@ -3,8 +3,8 @@
   <div id="app">
 
     <div class="test">
-
-      <li v-for="(products,productId) in transformCart" :key="productId" class="product">
+      cartTransformed
+      <li v-for="(products,productId) in this.cartTransformed" :key="productId" class="product">
         {{products}}{{productId}}
       </li>
     </div>
@@ -73,13 +73,14 @@ export default {
     currency(value) {
       return new Intl.NumberFormat("en-US",
           {style: "currency", currency: "USD"}).format(value);
-    }
+    },
   },
 
   data() {
     return {
       products: [],
       cart: [],
+      cartTransformed: [],
       sum: 0,
     }
   },
@@ -87,8 +88,7 @@ export default {
     axios.get("/query/appGetCard?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
           this.cart = response.data;
-          console.log(this.transformCart())
-          alert("--")
+          this.cartTransformed = this.transformCart(response.data);
         });
     axios.get("/query/appGetProducts?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
@@ -96,9 +96,9 @@ export default {
         });
   },
   methods: {
-    transformCart() {
+    transformCart(cart) {
       let array = []
-      for (let product of this.cart) {
+      for (let product of cart) {
         array[product.id] = array[product.id] ? array[product.id] : [];
         array[product.id].push(product);
       }
