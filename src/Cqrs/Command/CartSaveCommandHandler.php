@@ -1,8 +1,8 @@
 <?php
+
 namespace App\Cqrs\Command;
 
 use App\Cqrs\AbstractCommandHandler;
-use App\Cqrs\CommandHandlerInterface;
 use App\Entity\Cart;
 use App\Entity\CartProduct;
 use App\Entity\Command;
@@ -12,14 +12,18 @@ use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class CartSaveCommandHandler extends AbstractCommandHandler implements CommandHandlerInterface
+class CartSaveCommandHandler extends AbstractCommandHandler
 {
     private CartRepository $cartRepository;
     private CartProductRepository $cartProductRepository;
     private ProductRepository $productRepository;
 
-    public function __construct(EntityManagerInterface $entityManager, CartRepository $cartRepository, CartProductRepository $cartProductRepository, ProductRepository $productRepository) {
-
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        CartRepository $cartRepository,
+        CartProductRepository $cartProductRepository,
+        ProductRepository $productRepository
+    ) {
         parent::__construct($entityManager);
 
         $this->cartRepository = $cartRepository;
@@ -27,11 +31,10 @@ class CartSaveCommandHandler extends AbstractCommandHandler implements CommandHa
         $this->productRepository = $productRepository;
     }
 
-    public function execute(RequestStack $requestStack,CartSaveCommand $command): int
+    public function execute(RequestStack $requestStack, CartSaveCommand $command): int
     {
-        foreach($this->cartRepository->findBy(['sessionId' => $command->getSessionId()]) as $cart) {
-
-            foreach($this->cartProductRepository->findBy(['cart' => $cart]) as $cartProduct) {
+        foreach ($this->cartRepository->findBy(['sessionId' => $command->getSessionId()]) as $cart) {
+            foreach ($this->cartProductRepository->findBy(['cart' => $cart]) as $cartProduct) {
                 $this->entityManager->remove($cartProduct);
             };
 
@@ -42,7 +45,7 @@ class CartSaveCommandHandler extends AbstractCommandHandler implements CommandHa
         $cart->setSessionId($command->getSessionId());
         $this->entityManager->persist($cart);
 
-        foreach($command->getProducts() as $product) {
+        foreach ($command->getProducts() as $product) {
             $entity = $this->productRepository->find($product['id']);
             $cartProduct = new CartProduct();
             $cartProduct->setCart($cart);
@@ -50,7 +53,9 @@ class CartSaveCommandHandler extends AbstractCommandHandler implements CommandHa
             $this->entityManager->persist($cartProduct);
         }
 
-        $this->entityManager->persist(new Command($command::class,$command->getSessionId(),json_encode($command->getProducts())));
+        $this->entityManager->persist(
+            new Command($command::class, $command->getSessionId(), json_encode($command->getProducts()))
+        );
 
         $this->entityManager->flush();
         return true;

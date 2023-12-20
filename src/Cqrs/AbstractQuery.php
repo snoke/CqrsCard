@@ -1,7 +1,7 @@
 <?php
 namespace App\Cqrs;
 
-class AbstractCommand
+class AbstractQuery
 {
     protected string $sessionId;
 

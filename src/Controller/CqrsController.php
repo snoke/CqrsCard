@@ -11,8 +11,6 @@ use App\Cqrs\Query\AppGetCardQuery;
 use App\Cqrs\Query\AppGetCardQueryHandler;
 use App\Cqrs\Query\AppGetProductsQuery;
 use App\Cqrs\Query\AppGetProductsQueryHandler;
-use App\Repository\CartRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,8 +29,11 @@ class CqrsController extends AbstractController
     public function cartSave(RequestStack $requestStack, CartSaveCommandHandler $handler): JsonResponse
     {
         $sessionId = $requestStack->getSession()->get('sessionId');
-        $command = new CartSaveCommand($sessionId,json_decode($requestStack->getCurrentRequest()->getContent(),true)['cart']);
-        return new JsonResponse($handler->execute($requestStack,$command));
+        $command = new CartSaveCommand(
+            $sessionId,
+            json_decode($requestStack->getCurrentRequest()->getContent(), true)['cart']
+        );
+        return new JsonResponse($handler->execute($requestStack, $command));
     }
 
     /**

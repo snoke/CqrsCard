@@ -1,20 +1,21 @@
 <?php
+
 namespace App\Cqrs\Query;
 
-use App\Entity\Query;
-use App\Cqrs\QueryInterface;
+use App\Cqrs\AbstractQueryHandler;
 use App\Repository\CartRepository;
 use App\Repository\CartProductRepository;
 use App\Resources\AppGetCartResource;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RequestStack;
 
-class AppGetCardQueryHandler
+class AppGetCardQueryHandler extends AbstractQueryHandler
 {
     private CartRepository $cartRepository;
     private CartProductRepository $cartProductRepository;
 
-    public function __construct(CartProductRepository $cartProductRepository,CartRepository $cartRepository) {
+    public function __construct(CartProductRepository $cartProductRepository, CartRepository $cartRepository)
+    {
+        parent::__construct();
         $this->cartRepository = $cartRepository;
         $this->cartProductRepository = $cartProductRepository;
     }
@@ -25,7 +26,7 @@ class AppGetCardQueryHandler
         //$sessionId = $requestStack->getSession()->get('sessionId');
         $cart = $this->cartRepository->findOneBy(['sessionId' => $sessionId]);
 
-        $cartProducts = $cart?$this->cartProductRepository->findBy(['cart' => $cart]):[];
-        return new JsonResponse(AppGetCartResource::get($cart,$cartProducts));
+        $cartProducts = $cart ? $this->cartProductRepository->findBy(['cart' => $cart]) : [];
+        return new JsonResponse(AppGetCartResource::get($cart, $cartProducts));
     }
 }

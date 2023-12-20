@@ -1,5 +1,4 @@
 <?php
 namespace App\Cqrs;
-interface CommandInterface {
 
-}
+interface CommandInterface {}

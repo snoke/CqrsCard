@@ -21,13 +21,13 @@ class AppController extends AbstractController
         $session = $requestStack->getSession();
         if (!$session->isStarted()) {
             $session->start();
-            $session->set('sessionId',$session->getId());
+            $session->set('sessionId', $session->getId());
         }
 
         return $this->render('app/index.html.twig', [
             'config' => [
                 'sessionId' => $session->get('sessionId'),
             ]
-        ] );
+        ]);
     }
 }
