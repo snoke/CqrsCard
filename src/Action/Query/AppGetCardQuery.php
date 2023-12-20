@@ -20,6 +20,7 @@ class AppGetCardQuery implements QueryInterface
     {
         $session = $request->getSession();
         $session->start();
+        var_dump($session->getId());
         return new JsonResponse(AppGetProductsResource::get($this->cartRepository->findBy(['sessionId' => $session->getId()])));
     }
 }
