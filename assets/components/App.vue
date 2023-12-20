@@ -9,7 +9,7 @@
           <ul>
             <li v-for="(entry,productId) in this.cartTransformed" :key="productId" class="product" v-if="products">
               {{entry}}
-
+              {{productId}}
             </li>
           </ul>
           <div class="sum" style="text-align: center">Total: {{
