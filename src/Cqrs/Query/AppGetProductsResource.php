@@ -11,7 +11,12 @@ class AppGetProductsResource extends AbstractResource
 {
     public  function get(array $products) {
         return array_map(function(ProductEntity $product) {
-            return $this->serialize($product);
+            return [
+                'id' => $product->getId(),
+                'name' => $product->getName(),
+                'price' => $product->getPrice(),
+            ];
+            //return $this->serialize($product);
         }, $products);
     }
 }
