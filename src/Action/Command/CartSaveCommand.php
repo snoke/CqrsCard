@@ -24,7 +24,6 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
 
     public function execute(RequestStack $requestStack): int
     {
-
         $session = $requestStack->getSession();
         $session->start();
         var_dump($session->getId());
