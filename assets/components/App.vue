@@ -28,7 +28,8 @@
           </div>
           <div class="w-100 text-center">
             <button type="button" class="btn btn-outline-primary" @click="cartCheckout()">checkout
-          </button></div>
+            </button>
+          </div>
         </div>
       </div>
       <div class="col-auto">
@@ -40,7 +41,8 @@
               <div class="price">price: {{ product.price | currency }}</div>
               <div class="add-to-cart">
                 <input type="text" :ref="'amount_'+index" value="1"/>
-                <button type="button" class="btn btn-outline-primary" @click="productAddToCart(index,product)">add to cart
+                <button type="button" class="btn btn-outline-primary" @click="productAddToCart(index,product)">add to
+                  cart
                 </button>
               </div>
             </li>
@@ -74,18 +76,18 @@ export default {
     }
   },
   mounted: function () {
-    axios.get("/api/appGetCard?sessionId=" + this.$root.config.sessionId)
+    axios.get("/query/appGetCard?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
           this.cart = response.data;
         });
-    axios.get("/api/appGetProducts?sessionId=" + this.$root.config.sessionId)
+    axios.get("/query/appGetProducts?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
           this.products = response.data;
         });
   },
   methods: {
     cartCheckout: function () {
-      axios.post("/api/cartSave?sessionId=" + this.$root.config.sessionId, {cart: this.cart})
+      axios.post("/command/cartSave?sessionId=" + this.$root.config.sessionId, {cart: this.cart})
           .then((response) => {
           });
     },
