@@ -21,7 +21,7 @@ class Command
     private ?string $sessionId = null;
 
     #[ORM\Column]
-    private ?string $command = "";
+    private ?string $name = "";
 
     #[ORM\Column]
     private ?string $parameters = "";
@@ -29,7 +29,8 @@ class Command
     private ?DateTime $executedAt = null;
 
 
-    public function __construct(string $command,string $sessionId,string $parameters = '') {
+    public function __construct(string $name,string $sessionId,string $parameters = '') {
+        $this->name = $name;
         $this->sessionId = $sessionId;
         $this->executedAt = new DateTime();
         $this->parameters = $parameters;
