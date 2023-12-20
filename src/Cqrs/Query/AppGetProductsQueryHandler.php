@@ -18,8 +18,8 @@ class AppGetProductsQueryHandler extends AbstractQueryHandler
         $this->productRepository = $productRepository;
     }
 
-    public function fetch(AppGetProductsQuery $command): Response
+    public function fetch(AppGetProductsQuery $command, AppGetProductsResource $resource): Response
     {
-        return new Response(json_encode(AppGetProductsResource::get($this->productRepository->findAll())));
+        return new Response(json_encode($resource::get($this->productRepository->findAll())));
     }
 }

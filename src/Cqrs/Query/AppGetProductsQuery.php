@@ -7,13 +7,13 @@ namespace App\Cqrs\Query;
 
 use App\Cqrs\AbstractQuery;
 use App\Cqrs\QueryInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class AppGetProductsQuery extends AbstractQuery implements QueryInterface
 {
-
-    public function __construct(string $sessionId)
+    public function __construct(SessionInterface $session)
     {
-        parent::__construct($sessionId);
+        parent::__construct($session->getId());
     }
 
 }

@@ -12,6 +12,7 @@ use App\Cqrs\Query\AppGetCardQueryHandler;
 use App\Cqrs\Query\AppGetCartResource;
 use App\Cqrs\Query\AppGetProductsQuery;
 use App\Cqrs\Query\AppGetProductsQueryHandler;
+use App\Cqrs\Query\AppGetProductsResource;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,9 +28,9 @@ class QueryController extends AbstractController
     /**
      * @Route("/appGetProducts", name="AppGetProducts")
      */
-    public function appGetProducts(RequestStack $requestStack, AppGetProductsQueryHandler $handler): Response
+    public function appGetProducts(RequestStack $requestStack, AppGetProductsQueryHandler $handler,AppGetProductsResource $resource): Response
     {
-        return $handler->fetch(new AppGetProductsQuery($requestStack->getSession()->get('sessionId')));
+        return $handler->fetch(new AppGetProductsQuery($requestStack->getSession()),$resource);
     }
 
     /**
@@ -37,6 +38,6 @@ class QueryController extends AbstractController
      */
     public function appGetCard(RequestStack $requestStack, AppGetCardQueryHandler $handler,AppGetCartResource $resource): JsonResponse
     {
-        return $handler->fetch(new AppGetCardQuery($requestStack->getSession()->get('sessionId')), $resource);
+        return $handler->fetch(new AppGetCardQuery($requestStack->getSession()),$resource);
     }
 }
