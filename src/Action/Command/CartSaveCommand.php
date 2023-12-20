@@ -2,7 +2,7 @@
 namespace App\Action\Command;
 
 use App\Entity\Cart;
-use App\Entity\Product;
+use App\Entity\CartProduct;
 use App\Repository\CartRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -38,8 +38,10 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
 
         foreach(json_decode($requestStack->getCurrentRequest()->getContent(),true) as $product) {
             $entity = $this->productRepository->find($product[0]['id']);
-            $cart->addProduct($entity);
-            $this->entityManager->persist($entity);
+            $cartProduct = new CartProduct();
+            $cartProduct->setCart($cart);
+            $cartProduct->setProduct($entity);
+            $this->entityManager->persist($cartProduct);
         }
 
         $this->entityManager->flush();

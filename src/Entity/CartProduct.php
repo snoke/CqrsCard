@@ -30,7 +30,7 @@ class CartProduct
 
         return $this;
     }
-    public function getCart(): static
+    public function getCart(): Cart
     {
         return $this->cart;
     }
@@ -41,7 +41,7 @@ class CartProduct
 
         return $this;
     }
-    public function getProduct(): static
+    public function getProduct(): Product
     {
         return $this->product;
     }
