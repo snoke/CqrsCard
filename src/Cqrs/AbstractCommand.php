@@ -1,11 +1,9 @@
 <?php
 namespace App\Cqrs\Command;
 
-use App\Cqrs\AbstractAction;
 use Doctrine\ORM\EntityManagerInterface;
-use DigitalCraftsman\CQRS\Command\Command;
 
-class AbstractCommand implements Command
+class AbstractCommand
 {
     protected EntityManagerInterface $entityManager;
 
