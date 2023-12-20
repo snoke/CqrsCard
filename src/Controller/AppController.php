@@ -60,7 +60,6 @@ class AppController extends AbstractController
      */
     public function appGetCard(Request $request, RequestStack $requestStack, AppGetCardQuery $query): JsonResponse
     {
-
         return $query->fetch($request);
     }
     /**
@@ -68,7 +67,10 @@ class AppController extends AbstractController
      */
     public function index(Request $request, RequestStack $requestStack): Response
     {
-        $session = $requestStack->getSession();
+        $session = $request->getSession();
+        if (!$session->isStarted()) {
+            $session->start();
+        }
         var_dump($session->getId());
         return $this->render('app/index.html.twig', [
             'config' => [
