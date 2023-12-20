@@ -67,7 +67,10 @@ export default {
         .then((response) => {
           this.card = response.data;
           console.log(response.data);
-          alert("ASD")
+        });
+    axios.get("/appGetProducts?sessionId="+this.$root.config.sessionId)
+        .then((response) => {
+          this.products = response.data;
         });
   },
   methods: {
