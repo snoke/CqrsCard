@@ -3,7 +3,7 @@
   <div id="app">
     <div id="cart">cart
       <ul>
-        <li v-for="(product,index) in cart" :key="product.id" class="product">
+        <li v-for="(amount,productId) in formatCart" :key="productId" class="product" :set="product = getProductById(productId)">
           <div class="name">{{ product.name }}</div>
           <div class="price">price: {{ product.price | currency }}</div>
           <div class="buttons">
@@ -73,6 +73,19 @@ export default {
         });
   },
   methods: {
+    getProductById: function(productId) {
+      return  this.products.filter(function (element) {
+        return element.id === productId
+      })[0]
+    },
+    formatCart: function () {
+      let array = []
+      for(let product of this.cart) {
+        array[product.id] = array[product.id] ? array[product.id] : 0;
+        array[product.id]++;
+      }
+      return array;
+    },
     cartCheckout: function () {
       axios.post("/api/cartSave?sessionId=" + this.$root.config.sessionId, {cart: this.cart})
           .then((response) => {
