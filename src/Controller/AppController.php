@@ -67,7 +67,10 @@ class AppController extends AbstractController
     public function index(RequestStack $requestStack): Response
     {
         $session = $requestStack->getSession();
-        $session->start();
+        if (!$session->isStarted()) {
+
+            $session->start();
+        }
 
         return $this->render('app/index.html.twig', [
             'config' => [
