@@ -6,6 +6,7 @@ use App\Repository\CommandRepository;
 use DateTime;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Annotations\Annotation;
 
 /** @MappedSuperclass */
 #[ORM\Entity(repositoryClass: CommandRepository::class)]
