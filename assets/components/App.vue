@@ -64,15 +64,15 @@ export default {
   },
   mounted: function () {
     console.log(this.products);
-    console.log(this.card);
+    console.log(this.cart);
     axios.get("/appGetCard?sessionId="+this.$root.config.sessionId)
         .then((response) => {
-          this.card = [].concat(response.data);
+          this.cart = [].concat(response.data);
           console.log(response.data);
-          this.card = [
+          this.cart = [
             {id:12,name:'tes',price:5.22}
           ];
-          console.log(this.card);
+          console.log(this.cart);
         });
     axios.get("/appGetProducts?sessionId="+this.$root.config.sessionId)
         .then((response) => {
