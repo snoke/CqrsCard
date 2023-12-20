@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Cqrs\Command\CartSaveCommand;
 use App\Cqrs\Command\CartSaveCommandHandler;
 use App\Cqrs\Query\AppGetCardQuery;
+use App\Cqrs\Query\AppGetCardQueryHandler;
 use App\Cqrs\Query\AppGetProductsQuery;
 use App\Repository\CartRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -44,8 +45,9 @@ class CqrsController extends AbstractController
     /**
      * @Route("/appGetCard", name="appGetCard")
      */
-    public function appGetCard(RequestStack $requestStack, AppGetCardQuery $query): JsonResponse
+    public function appGetCard(RequestStack $requestStack, AppGetCardQueryHandler $handler): JsonResponse
     {
-        return $query->fetch($requestStack);
+        $query = new AppGetCardQuery($requestStack->getSession()->get('sessionId'));
+        return $handler->fetch($query);
     }
 }
