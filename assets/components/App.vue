@@ -4,8 +4,7 @@
 
     <div class="test">
       {{cartTransformed}}
-      <li v-for="(products,productId) in this.cartTransformed" :key="productId" class="product" v-if="productId" :set="product=products[0]">
-        product: {{product}}
+      <li v-for="(products,productId) in transf" :key="productId" class="product" v-if="productId">
         products:{{products}}
         id:{{productId}}
       </li>
@@ -86,6 +85,17 @@ export default {
       sum: 0,
     }
   },
+  computed: {
+    // a computed getter
+    transf: function () {
+      let array = []
+      for (let product of this.cart) {
+        array[product.id] = array[product.id] ? array[product.id] : [];
+        array[product.id].push(product);
+      }
+      return array;
+    }
+  }
   mounted: function () {
     axios.get("/query/appGetCard?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
