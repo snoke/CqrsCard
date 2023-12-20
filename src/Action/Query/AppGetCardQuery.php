@@ -24,7 +24,8 @@ class AppGetCardQuery implements QueryInterface
     {
         $sessionId = $requestStack->getSession()->get('sessionId');
         $cart = $this->cartRepository->findOneBy(['sessionId' => $sessionId]);
-        $cartProducts = $this->cartProductRepository->findBy(['cart_id' => $cart->getId()]);
+
+        $cartProducts = $cart?$this->cartProductRepository->findBy(['cart_id' => $cart->getId()]):[];
         return new JsonResponse(AppGetCartResource::get($cart,$cartProducts));
     }
 }
