@@ -13,13 +13,13 @@
               <div class="amount">Amount: {{ products.length }}</div>
               <div class="priceSubTotal">Price subtotal: {{ products[0].price * products.length | currency }}</div>
               <div class="buttons">
-                <button type="button" class="btn btn-outline-success" @click="cartIncreaseProduct(index,products[0])">
+                <button type="button" class="btn btn-outline-secondary button-increase" @click="cartIncreaseProduct(index,products[0])">
                   +
                 </button>
-                <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(index,products[0])">
+                <button type="button" class="btn btn-outline-secondary button-decrease" @click="cartDecreaseProduct(index,products[0])">
                   -
                 </button>
-                <button type="button" class="btn btn-outline-warning" @click="cartRemoveProduct(index,products[0])">
+                <button type="button" class="btn btn-outline-secondary button-remove" @click="cartRemoveProduct(index,products[0])">
                   remove
                 </button>
               </div>
