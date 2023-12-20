@@ -63,9 +63,10 @@ export default {
     }
   },
   mounted: function () {
+    console.log(this.products);
+    console.log(this.card);
     axios.get("/appGetCard?sessionId="+this.$root.config.sessionId)
         .then((response) => {
-          console.log(this.card);
           this.card = [].concat(response.data);
           console.log(response.data);
           this.card = [
