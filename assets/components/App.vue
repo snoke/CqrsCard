@@ -40,7 +40,7 @@
               <div class="name">{{ product.name }}</div>
               <div class="price">price: {{ product.price | currency }}</div>
               <div class="add-to-cart">
-                <input type="text" :ref="'amount_'+index" value="1"/>
+                amount: <input type="text" :ref="'amount_'+index" value="1"/>
                 <button type="button" class="btn btn-outline-primary" @click="productAddToCart(index,product)">add to
                   cart
                 </button>
