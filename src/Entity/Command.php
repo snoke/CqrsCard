@@ -21,12 +21,15 @@ class Command
     private ?string $sessionId = null;
 
     #[ORM\Column]
-    private ?DateTime $executedAt = null;
+    private ?string $command = "";
 
     #[ORM\Column]
     private ?string $parameters = "";
+    #[ORM\Column]
+    private ?DateTime $executedAt = null;
 
-    public function __construct(string $sessionId,string $parameters = '') {
+
+    public function __construct(string $command,string $sessionId,string $parameters = '') {
         $this->sessionId = $sessionId;
         $this->executedAt = new DateTime();
         $this->parameters = $parameters;

@@ -54,7 +54,7 @@ class CartSaveCommandHandlerHandler extends AbstractCommandHandler implements Co
             $this->entityManager->persist($cartProduct);
         }
         //$this->entityManager->persist($command);
-        $this->entityManager->persist(new Command($command->getSessionId(),json_encode($command->getProducts())));
+        $this->entityManager->persist(new Command($command::class,$command->getSessionId(),json_encode($command->getProducts())));
         $this->entityManager->flush();
         return true;
     }
