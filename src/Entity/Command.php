@@ -7,10 +7,8 @@ namespace App\Entity;
 
 use App\Repository\CommandRepository;
 use DateTime;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Annotations\Annotation;
-use Doctrine\ORM\Mapping\MappedSuperclass;
 
 #[ORM\Entity(repositoryClass: CommandRepository::class)]
 class Command

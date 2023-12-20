@@ -8,6 +8,9 @@ namespace App\Entity;
 use App\Repository\CartProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Custom intermediate table to enable multiple unique entity collections without superlass
+ */
 #[ORM\Entity(repositoryClass: CartProductRepository::class)]
 class CartProduct
 {
