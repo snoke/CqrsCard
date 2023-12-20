@@ -26,9 +26,7 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
     {
 
         $session = $requestStack->getSession();
-        if (!$session->isStarted()) {
-            $session->start();
-        }
+        $session->start();
         var_dump($session->getId());
 
         foreach($this->cartRepository->findBy(['sessionId' => $session->getId()]) as $cart) {
