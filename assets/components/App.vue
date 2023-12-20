@@ -3,19 +3,10 @@
   <div id="app">
 
     <div class="test">
-      <li v-for="(products,productId) in transf()" :key="productId" class="product" v-if="productId">
+      {{cartTransformed}}
+      <li v-for="(products,productId) in transf" :key="productId" class="product" v-if="productId">
         products:{{products}}
         id:{{productId}}
-        <div class="name">Name: {{ product[0].name }}</div>
-        <div class="price">Price: {{ product[0].price | currency }}</div>
-        <div class="buttons">
-          <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(index,product[0])">+
-          </button>
-          <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(index,product[0])">-
-          </button>
-          <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(index,product[0])">remove
-          </button>
-        </div>
       </li>
     </div>
 
