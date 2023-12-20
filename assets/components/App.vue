@@ -3,6 +3,22 @@
   <div id="app">
     <div id="cart">cart
       <ul>
+        <li v-for="(products,key) of formatCart()" :key="key" class="product">
+
+          <div class="amount">{{ products.length() }}</div>
+          <div class="name">{{ products[0].name }}</div>
+          <div class="price">price: {{ products[0].price | currency }}</div>
+          <div class="buttons">
+            <button type="button" class="btn btn-outline-secondary" @click="cartIncreaseProduct(index,products[0])">+
+            </button>
+            <button type="button" class="btn btn-outline-secondary" @click="cartDecreaseProduct(index,products[0])">-
+            </button>
+            <button type="button" class="btn btn-outline-secondary" @click="cartRemoveProduct(index,products[0])">remove
+            </button>
+          </div>
+        </li>
+      </ul>
+      <ul>
         <li v-for="(product,index) in cart" :key="product.id" class="product">
           <div class="name">{{ product.name }}</div>
           <div class="price">price: {{ product.price | currency }}</div>
@@ -73,6 +89,14 @@ export default {
         });
   },
   methods: {
+    formatCart: function () {
+      let array = [];
+      for(let product of this.cart) {
+        array[product.id] = array[product.id]?array[product.id]:[];
+        array[product.id].push(product)
+      }
+      return array;
+    },
     cartCheckout: function () {
       axios.post("/api/cartSave?sessionId=" + this.$root.config.sessionId, {cart: this.cart})
           .then((response) => {
