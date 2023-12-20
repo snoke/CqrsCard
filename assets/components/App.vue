@@ -1,6 +1,14 @@
 <!-- Author: Stefan Sander <mail@stefan-sander.online> -->
 <template>
   <div id="app">
+
+    <div class="test">
+      <li v-for="(product,index) in transformCart" :key="product.id" class="product">
+        <div class="name">{{ product.name }}</div>
+        <div class="price">price: {{ product.price | currency }}</div>
+      </li>
+    </div>
+
     <div class="row">
 
       <div class="col-auto">
