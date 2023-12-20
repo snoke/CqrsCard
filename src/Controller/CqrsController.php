@@ -21,12 +21,12 @@ use Symfony\Component\HttpFoundation\RequestStack;
 /**
  * @Route("/api", name="cartSave")
  */
-class ApiController extends AbstractController
+class CqrsController extends AbstractController
 {
     /**
      * @Route("/cartSave", name="cartSave")
      */
-    public function cartSave(RequestStack $requestStack, CartSaveCommandHandler $handler, EntityManagerInterface $entityManager): JsonResponse
+    public function cartSave(RequestStack $requestStack, CartSaveCommandHandler $handler): JsonResponse
     {
         $sessionId = $requestStack->getSession()->get('sessionId');
         $command = new CartSaveCommand($sessionId,json_decode($requestStack->getCurrentRequest()->getContent(),true)['cart']);
