@@ -16,5 +16,4 @@ class AppGetCardQuery extends AbstractQuery implements QueryInterface
     {
         parent::__construct($session->getId());
     }
-
 }
