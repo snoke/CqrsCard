@@ -10,7 +10,7 @@ class AppGetProductsQuery extends AbstractQuery implements QueryInterface
 
     public function __construct(string $sessionId)
     {
-        parent::__construct();
+        parent::__construct($sessionId);
     }
 
 }
