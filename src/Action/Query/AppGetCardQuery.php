@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class AppLoadCartQuery implements QueryInterface
+class AppGetCardQuery implements QueryInterface
 {
     private CartRepository $cartRepository;
 
@@ -18,6 +18,8 @@ class AppLoadCartQuery implements QueryInterface
 
     public function fetch(Request $request): JsonResponse
     {
-        return new JsonResponse(AppGetProductsResource::get($this->cartRepostiroy->findBy(['sessionId' => $parameters['sessionId']])));
+        $session = $request->getSession();
+        $session->start();
+        return new JsonResponse(AppGetProductsResource::get($this->cartRepository->findBy(['sessionId' => $session->getId()])));
     }
 }

@@ -7,9 +7,6 @@ use App\Repository\CartRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 class CartSaveCommand extends AbstractCommand implements CommandInterface
 {
@@ -29,15 +26,21 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
         $session = $request->getSession();
         $session->start();
 
+        foreach($this->cartRepository->findBy(['sessionId' => $session->getId()]) as $cart) {
+            $this->entityManager->remove($cart);
+            $this->entityManager->flush();
+        };
+
         $cart = new Cart();
         $cart->setSessionId($session->getId());
         $this->entityManager->persist($cart);
+
         foreach(json_decode($request->getContent(),true) as $product) {
-            var_dump($this->productRepository->find($product[0]['id']));
-            $x = $this->productRepository->find($product[0]['id']);
-            $cart->addProduct($x);
-            $this->entityManager->persist($x);
+            $entity = $this->productRepository->find($product[0]['id']);
+            $cart->addProduct($entity);
+            $this->entityManager->persist($entity);
         }
+
         $this->entityManager->flush();
         return true;
     }

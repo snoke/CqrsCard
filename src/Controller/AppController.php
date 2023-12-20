@@ -7,6 +7,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Action\Command\CartSaveCommand;
+use App\Action\Query\AppGetCardQuery;
 use App\Action\Query\AppGetProductsQuery;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,17 +20,6 @@ use Symfony\Component\HttpFoundation\Request;
 class AppController extends AbstractController
 {
 
-    /**
-     * @Route("/cartLoad", name="cartLoad")
-     */
-    public function cartLoad(Request $request, CartLoad $command): JsonResponse
-    {
-        $session = $request->getSession();
-        $session->start();
-        $sessionId = $session->getId();
-        //$command->execute($products,$sessionId);
-        return new JsonResponse(true);
-    }
     /**
      * @Route("/cartSave", name="cartSave")
      */
@@ -54,6 +44,7 @@ class AppController extends AbstractController
         $product->setPrice(2.23);
         $em->persist($product);$em->flush();
 
+        return true;
     }
     /**
      * @Route("/appGetProducts", name="AppGetProducts")
@@ -63,6 +54,13 @@ class AppController extends AbstractController
          return $query->fetch($request);
     }
 
+    /**
+     * @Route("/cartLoad", name="cartLoad")
+     */
+    public function appGetCard(Request $request, AppGetCardQuery $query): JsonResponse
+    {
+        return $query->fetch($request);
+    }
     /**
      * @Route("/", name="index")
      */
