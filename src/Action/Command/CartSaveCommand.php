@@ -25,7 +25,7 @@ class CartSaveCommand extends AbstractCommand implements CommandInterface
     public function execute(RequestStack $requestStack): int
     {
         echo '<pre>';
-        var_dump(json_decode($requestStack->getCurrentRequest()->getContent(),true) );die;
+        var_dump(json_decode($requestStack->getCurrentRequest()->getContent(),true) );
 
         $sessionId = $requestStack->getSession()->get('sessionId');
         foreach($this->cartRepository->findBy(['sessionId' => $sessionId]) as $cart) {
