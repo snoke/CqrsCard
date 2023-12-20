@@ -63,7 +63,7 @@ export default {
     }
   },
   mounted: function () {
-    axios.get("/appGetCards")
+    axios.get("/appGetCard")
         .then((response) => {
           this.card = response.data;
         });
