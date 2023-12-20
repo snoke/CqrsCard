@@ -42,11 +42,12 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 import device from "vue-device-detector"
 Vue.use(device)
-
+var config = JSON.parse(document.getElementById('_symfonyData').innerHTML);
+console.log(config);
 new Vue({
     data: function() {
         return {
-            config:[],
+            config:config,
         }
     },
     el: '#app',
