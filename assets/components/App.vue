@@ -124,10 +124,11 @@ export default {
       })
     },
     cartDecreaseProduct: function (index, product) {
-      this.cart.splice(index, 1)
+      this.cart.splice(this.cart.findIndex(item => item.id === product.id), 1)
+      //this.cart.splice(index, 1)
     },
     cartIncreaseProduct: function (index, product) {
-      this.productAddToCart(index, product, 1)
+      this.productAddToCart(this.cart.findIndex(item => item.id === product.id), product, 1)
     },
     productAddToCart: function (index, product, amount) {
       for (let i = 0; i < (amount ? amount : this.$refs['amount_' + index][0].value); i++) {
