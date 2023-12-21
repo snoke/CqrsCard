@@ -68,14 +68,12 @@ export default {
   filters: {
 
     total(value) {
-      return new Intl.NumberFormat("en-US",
-          {style: "currency", currency: "USD"}).format(value.reduce((accumulator, object) => {
+      return this.formatCurrency(value.reduce((accumulator, object) => {
         return accumulator + object['price'];
       }, 0));
     },
     currency(value) {
-      return new Intl.NumberFormat("en-US",
-          {style: "currency", currency: "USD"}).format(value);
+      return this.formatCurrency(value)
     },
   },
 
@@ -107,6 +105,11 @@ export default {
         });
   },
   methods: {
+
+    formatCurrency(value) {
+      return new Intl.NumberFormat("en-US",
+          {style: "currency", currency: "USD"}).format(value);
+    },
     transformCart(cart) {
       let array = []
       for (let product of cart) {
