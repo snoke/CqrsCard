@@ -94,7 +94,9 @@ export default {
         });
     axios.get("/query/appGetProducts?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
-          this.products = response.data;
+          this.products = response.data.map(e => {
+            return JSON.parse(e)
+          })
         });
   },
   methods: {
