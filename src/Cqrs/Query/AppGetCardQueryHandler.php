@@ -9,7 +9,6 @@ use App\Cqrs\AbstractQueryHandler;
 use App\Cqrs\DTO\AppGetCartResource;
 use App\Repository\CartProductRepository;
 use App\Repository\CartRepository;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class AppGetCardQueryHandler extends AbstractQueryHandler
@@ -29,6 +28,6 @@ class AppGetCardQueryHandler extends AbstractQueryHandler
         $cart = $this->cartRepository->findOneBy(['sessionId' => $sessionId]);
 
         $cartProducts = $cart ? $this->cartProductRepository->findBy(['cart' => $cart]) : [];
-        return new JsonResponse($resource->get($cart, $cartProducts));
+        return new Response(json_encode($resource->get($cart, $cartProducts)));
     }
 }
