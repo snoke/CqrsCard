@@ -7,16 +7,15 @@ namespace App\Cqrs\Query;
 
 
 use App\Cqrs\AbstractResource;
-use App\Entity\Cart;
-use App\Entity\CartProduct as CartProduct;
+use App\Entity\CartProduct;
 
 class AppGetCartResource extends AbstractResource
 {
-    public  function get(?Cart $cart,?array $cartProducts)
+    public  function get(?array $cartProducts)
     {
-        return $cart ? array_map(function (CartProduct $cartProduct) {
+        return array_map(function (CartProduct $cartProduct) {
             $product = $cartProduct->getProduct();
             return $this->serialize($product);
-        }, $cartProducts) : [];
+        }, $cartProducts);
     }
 }

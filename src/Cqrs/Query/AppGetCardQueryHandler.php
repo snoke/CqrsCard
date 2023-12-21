@@ -27,6 +27,6 @@ class AppGetCardQueryHandler extends AbstractQueryHandler
         $cart = $this->cartRepository->findOneBy(['sessionId' => $sessionId]);
 
         $cartProducts = $cart ? $this->cartProductRepository->findBy(['cart' => $cart]) : [];
-        return new Response(json_encode($resource->get($cart, $cartProducts)));
+        return new Response(json_encode($resource->get($cart)));
     }
 }
