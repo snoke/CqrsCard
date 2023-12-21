@@ -3,7 +3,7 @@
  * Author: Stefan Sander <mail@stefan-sander.online>
  */
 
-namespace App\Cqrs\DTO;
+namespace App\Cqrs\Query;
 
 
 use App\Cqrs\AbstractResource;
@@ -17,11 +17,6 @@ class AppGetCartResource extends AbstractResource
         return $cart ? array_map(function (CartProduct $cartProduct) {
             $product = $cartProduct->getProduct();
             return $this->serialize($product);
-            /**return [
-                'id' => $product->getId(),
-                'name' => $product->getName(),
-                'price' => $product->getPrice(),
-            ];**/
         }, $cartProducts) : [];
     }
 }

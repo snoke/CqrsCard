@@ -6,7 +6,6 @@
 namespace App\Cqrs\Query;
 
 use App\Cqrs\AbstractQueryHandler;
-use App\Cqrs\DTO\AppGetProductsResource;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Response;
 

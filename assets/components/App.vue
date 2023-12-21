@@ -97,7 +97,6 @@ export default {
     axios.get("/query/appGetProducts?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
           this.products = response.data;
-
         });
   },
   methods: {
