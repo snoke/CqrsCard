@@ -90,14 +90,14 @@ export default {
   mounted: function () {
     axios.get("/query/appGetCard?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
-          this.cart = response.data;
+          this.cart =  response.data.map(e => {
+            return JSON.parse(e)
+          })
         });
     axios.get("/query/appGetProducts?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
-          this.products = response.data.map(e => {
-            console.log(e)
-            return e
-          })
+          this.products = response.data;
+
         });
   },
   methods: {
