@@ -27,7 +27,7 @@
             </li>
           </ul>
           <div class="sum" >Total: {{
-              cart | total
+              cart | total | currency
             }}
           </div>
           <div class="w-100 text-center">
@@ -66,14 +66,14 @@ import axios from "axios";
 export default {
   name: 'App',
   filters: {
-
     total(value) {
-      return this.formatCurrency(value.reduce((accumulator, object) => {
+      value.reduce((accumulator, object) => {
         return accumulator + object['price'];
-      }, 0));
+      }, 0);
     },
     currency(value) {
-      return this.formatCurrency(value)
+      return new Intl.NumberFormat("en-US",
+          {style: "currency", currency: "USD"}).format(value);
     },
   },
 
@@ -105,11 +105,6 @@ export default {
         });
   },
   methods: {
-
-    formatCurrency(value) {
-      return new Intl.NumberFormat("en-US",
-          {style: "currency", currency: "USD"}).format(value);
-    },
     transformCart(cart) {
       let array = []
       for (let product of cart) {
