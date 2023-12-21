@@ -95,6 +95,8 @@ export default {
     axios.get("/query/appGetProducts?sessionId=" + this.$root.config.sessionId)
         .then((response) => {
           this.products = response.data.map(e => {
+            console.log(e)
+            console.log(JSON.parse(e))
             return JSON.parse(e)
           })
         });
