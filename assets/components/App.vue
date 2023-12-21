@@ -71,6 +71,7 @@ export default {
       value.reduce((accumulator, object) => {
         return accumulator + object['price'];
       }, 0)
+    }
   },
 
   data() {
