@@ -7,7 +7,6 @@ namespace App\Cqrs\Query;
 
 use App\Cqrs\AbstractQueryHandler;
 use App\Repository\ProductRepository;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class AppGetProductsQueryHandler extends AbstractQueryHandler
@@ -21,6 +20,6 @@ class AppGetProductsQueryHandler extends AbstractQueryHandler
 
     public function fetch(AppGetProductsQuery $command, AppGetProductsResource $resource): Response
     {
-        return new JsonResponse($resource->get($this->productRepository->findAll()));
+        return new Response(json_encode($resource->get($this->productRepository->findAll())));
     }
 }
