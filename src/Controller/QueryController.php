@@ -5,19 +5,15 @@
 
 namespace App\Controller;
 
-use App\Cqrs\Command\CartSaveCommand;
-use App\Cqrs\Command\CartSaveCommandHandler;
+use App\Cqrs\DTO\AppGetCartResource;
+use App\Cqrs\DTO\AppGetProductsResource;
 use App\Cqrs\Query\AppGetCardQuery;
 use App\Cqrs\Query\AppGetCardQueryHandler;
-use App\Cqrs\Query\AppGetCartResource;
 use App\Cqrs\Query\AppGetProductsQuery;
 use App\Cqrs\Query\AppGetProductsQueryHandler;
-use App\Cqrs\Query\AppGetProductsResource;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Response;
 
 
 /**

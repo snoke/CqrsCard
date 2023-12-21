@@ -3,7 +3,7 @@
  * Author: Stefan Sander <mail@stefan-sander.online>
  */
 
-namespace App\Cqrs\Query;
+namespace App\Cqrs\DTO;
 
 
 use App\Cqrs\AbstractResource;

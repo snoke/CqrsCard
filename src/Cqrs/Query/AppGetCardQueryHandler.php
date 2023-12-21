@@ -5,11 +5,11 @@
 
 namespace App\Cqrs\Query;
 
-use Symfony\Component\HttpFoundation\Response;
 use App\Cqrs\AbstractQueryHandler;
+use App\Cqrs\DTO\AppGetCartResource;
 use App\Repository\CartProductRepository;
 use App\Repository\CartRepository;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class AppGetCardQueryHandler extends AbstractQueryHandler
 {
