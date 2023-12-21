@@ -96,8 +96,7 @@ export default {
         .then((response) => {
           this.products = response.data.map(e => {
             console.log(e)
-            console.log(JSON.parse(e))
-            return JSON.parse(e)
+            return e
           })
         });
   },
