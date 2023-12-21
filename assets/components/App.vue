@@ -26,7 +26,12 @@
 
             </li>
           </ul>
-          <div class="sum" >Total: {{ cart | total | currency }}</div>
+          <div class="sum" >Total: {{
+              cart.reduce((accumulator, object) => {
+                return accumulator + object['price'];
+              }, 0) | currency
+            }}
+          </div>
           <div class="w-100 text-center">
             <button type="button" class="btn btn-outline-primary button-checkout" @click="cartCheckout()">checkout
             </button>
@@ -67,11 +72,6 @@ export default {
       return new Intl.NumberFormat("en-US",
           {style: "currency", currency: "USD"}).format(value);
     },
-    total(value) {
-      value.reduce((accumulator, object) => {
-        return accumulator + object['price'];
-      }, 0)
-    }
   },
 
   data() {
