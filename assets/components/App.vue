@@ -27,9 +27,7 @@
             </li>
           </ul>
           <div class="sum" >Total: {{
-              cart.reduce((accumulator, object) => {
-                return accumulator + object['price'];
-              }, 0) | currency
+              cart | currency
             }}
           </div>
           <div class="w-100 text-center">
@@ -70,7 +68,9 @@ export default {
   filters: {
     currency(value) {
       return new Intl.NumberFormat("en-US",
-          {style: "currency", currency: "USD"}).format(value);
+          {style: "currency", currency: "USD"}).format(value.reduce((accumulator, object) => {
+        return accumulator + object['price'];
+      }, 0));
     },
   },
 
